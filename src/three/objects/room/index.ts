@@ -10,6 +10,7 @@ import { mouse } from "./mouse";
 import { messagePopup } from "./message-popup";
 import { penguin } from "./penguin";
 import { music } from "./music";
+import { cup } from "./cup";
 
 import type { Object3D } from "three";
 
@@ -29,6 +30,7 @@ let objects: {
   plant: Mesh;
   room: Mesh;
   shelf: Mesh;
+  cup: Mesh;
 } | null = null;
 
 const init = () => {
@@ -40,8 +42,11 @@ const init = () => {
   if (objects?.mouse) mouse.init(objects.mouse);
   if (objects?.penguin)
     penguin.init(objects.penguin, { left: objects["penguin-wing-left"], right: objects["penguin-wing-right"] });
-
+  
   if (objects?.music) music.init(objects.music);
+  
+  if (objects?.cup)
+    cup.init(objects.cup);
 };
 
 const initObjects = () => {
@@ -49,6 +54,7 @@ const initObjects = () => {
   const resource = resources.items["room-model"];
 
   const penguin = resource.scene.children.find((child: Object3D) => child.name === "penguin");
+  const cup = resource.scene.children.find((child: Object3D) => child.name === "cup");
   objects = {
     blackboard: resource.scene.children.find((child: Object3D) => child.name === "blackboard"),
     carpet: resource.scene.children.find((child: Object3D) => child.name === "carpet"),
@@ -62,6 +68,7 @@ const initObjects = () => {
     penguin,
     "penguin-wing-left": penguin.children.find((child: Object3D) => child.name === "penguin-wing-left"),
     "penguin-wing-right": penguin.children.find((child: Object3D) => child.name === "penguin-wing-right"),
+    cup,
   };
 
   Object.values(objects).forEach((object) => {
