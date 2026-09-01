@@ -122,8 +122,16 @@ const SERVICES_DE = [
   { name: "Echtzeit-Mehrspieler" },
 ] as const satisfies { name: string }[];
 
+const SERVICES_ES = [
+  { name: "Laravel" },
+  { name: "Vue" },
+  { name: "React & Vue" },
+  { name: "Kubernetes & Redis" },
+  { name: "Echtzeit-Mehrspieler" },
+] as const satisfies { name: string }[];
+
 const services = computed(() => {
-  return locale.value === "en" ? SERVICES_EN : SERVICES_DE;
+  return locale.value === "es" ? SERVICES_ES : SERVICES_EN;
 });
 </script>
 
