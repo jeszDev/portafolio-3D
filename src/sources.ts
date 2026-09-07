@@ -8,6 +8,7 @@ import contactShadowTexture from "./assets/textures/contact-shadow.webp";
 import desktopsTexture from "./assets/textures/desktops.webp";
 import diffuseMap from "./assets/textures/diffuse-map.png";
 import faceTexture from "./assets/textures/face-spritesheet.png";
+import gokuTexture from "./assets/textures/goku.webp";
 import headTexture from "./assets/textures/head.webp";
 import iconSpritesheet from "./assets/textures/icon-spritesheet.webp";
 import matcapBlack from "./assets/textures/matcap-black.webp";
@@ -38,6 +39,7 @@ export const sources = [
   { name: "desktops-texture", type: "texture", path: desktopsTexture },
   { name: "diffuse-map", type: "texture", path: diffuseMap },
   { name: "face-texture", type: "texture", path: faceTexture },
+  { name: "goku-texture", type: "texture", path: gokuTexture },
   { name: "head-texture", type: "texture", path: headTexture },
   { name: "hologram-plane-texture", type: "texture", path: hologramPlaneTexture },
   { name: "icon-spritesheet", type: "texture", path: iconSpritesheet },

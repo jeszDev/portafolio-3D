@@ -5,9 +5,20 @@ import shadowFragmentShader from "../shaders/shadow-catcher/fragment.glsl";
 
 import type { Material } from "three";
 
+let gokuMaterial: Material | null = null;
 let roomMaterial: Material | null = null;
 let contactMaterial: Material | null = null;
 let shadowMaterial: ShaderMaterial | null = null;
+
+export const getGokuMaterial = (): Material => {
+  if (gokuMaterial) return gokuMaterial;
+  const texture = resources.items["goku-texture"];
+  texture.flipY = false;
+
+  gokuMaterial = new MeshBasicMaterial({ map: texture });
+
+  return gokuMaterial;
+};
 
 export const getRoomMaterial = (): Material => {
   if (roomMaterial) return roomMaterial;
