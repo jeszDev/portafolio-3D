@@ -1,6 +1,6 @@
 import { resources } from "../../../utils/resources";
 import { scene } from "../../core/scene";
-import { Euler, Group, Mesh } from "three";
+import { Euler, Group, Mesh, MeshBasicMaterial } from "three";
 import { getRoomMaterial, getGokuMaterial } from "../../common/materials";
 import { sceneWeights } from "../../../animations/scenes";
 import gsap from "gsap";
@@ -11,6 +11,7 @@ import { messagePopup } from "./message-popup";
 import { penguin } from "./penguin";
 import { music } from "./music";
 import { cup } from "./cup";
+import { blackboard } from "./blackboard";
 
 import type { Object3D } from "three";
 
@@ -18,7 +19,8 @@ const group = new Group();
 const chairScrollRotation = new Euler();
 
 let objects: {
-  blackboard: Mesh;
+  "blackboard-frame": Mesh;
+  "blackboard-screen": Mesh;
   carpet: Mesh;
   chair: Mesh;
   frame: Mesh;
@@ -48,6 +50,9 @@ const init = () => {
   
   if (objects?.cup)
     cup.init(objects.cup);
+
+  if (objects?.["blackboard-screen"])
+    blackboard.init(objects["blackboard-screen"]);
 };
 
 const initObjects = () => {
@@ -57,16 +62,17 @@ const initObjects = () => {
   const penguin = resource.scene.children.find((child: Object3D) => child.name === "penguin");
   const cup = resource.scene.children.find((child: Object3D) => child.name === "cup");
   objects = {
-    blackboard: resource.scene.children.find((child: Object3D) => child.name === "blackboard"),
+    "blackboard-frame": resource.scene.children.find((child: Object3D) => child.name === "blackboard-frame"),
+    "blackboard-screen": resource.scene.children.find((child: Object3D) => child.name === "blackboard-screen"),
     carpet: resource.scene.children.find((child: Object3D) => child.name === "carpet"),
     chair: resource.scene.children.find((child: Object3D) => child.name === "chair"),
     frame: resource.scene.children.find((child: Object3D) => child.name === "frame"),
-    goku: resource.scene.children.find((child: Object3D) => child.name === "goku"),
     mouse: resource.scene.children.find((child: Object3D) => child.name === "mouse"),
     music: resource.scene.children.find((child: Object3D) => child.name === "music"),
     plant: resource.scene.children.find((child: Object3D) => child.name === "plant"),
     room: resource.scene.children.find((child: Object3D) => child.name === "room"),
     shelf: resource.scene.children.find((child: Object3D) => child.name === "shelf"),
+    goku: resource.scene.children.find((child: Object3D) => child.name === "goku"),
     penguin,
     "penguin-wing-left": penguin.children.find((child: Object3D) => child.name === "penguin-wing-left"),
     "penguin-wing-right": penguin.children.find((child: Object3D) => child.name === "penguin-wing-right"),
@@ -75,14 +81,17 @@ const initObjects = () => {
 
   const roomMaterial = getRoomMaterial();
   const gokuMaterial = getGokuMaterial();
+  const blackboardFrameMaterial = new MeshBasicMaterial({ color: 0x753514 });
+
   Object.values(objects).forEach((object) => {
     if (!object) return;
-    const mat = getRoomMaterial();
-    // object.material = mat;
-    // group.add(object);
 
     if (object.name === "goku") {
       object.material = gokuMaterial;
+    } else if (object.name === "blackboard-frame") {
+      object.material = blackboardFrameMaterial;
+    } else if (object.name === "blackboard-screen") {
+      // blackboard.init le asigna su propio CanvasTexture dinámico
     } else {
       object.material = roomMaterial;
     }
@@ -92,11 +101,11 @@ const initObjects = () => {
     if (object.name === "carpet") {
       object.renderOrder = -10;
       object.onBeforeRender = () => {
-        mat.depthWrite = false;
+        roomMaterial.depthWrite = false;
       };
 
       object.onAfterRender = () => {
-        mat.depthWrite = true;
+        roomMaterial.depthWrite = true;
       };
     }
   });
@@ -113,6 +122,7 @@ const tick = () => {
 
   penguin.tick();
   music.tick();
+  blackboard.tick();
 };
 
 const destroy = () => {
@@ -124,6 +134,7 @@ const destroy = () => {
   mouse.destroy();
   penguin.destroy();
   music.destroy();
+  blackboard.destroy();
 };
 
 export const room = { init, destroy, group, chairScrollRotation };
