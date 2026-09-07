@@ -4,7 +4,7 @@ import { Euler, Group, Mesh } from "three";
 import { getRoomMaterial } from "../../common/materials";
 import { sceneWeights } from "../../../animations/scenes";
 import gsap from "gsap";
-import { shadow } from "./shadow";
+// import { shadow } from "./shadow";
 import { desktops } from "./desktops";
 import { mouse } from "./mouse";
 import { messagePopup } from "./message-popup";
@@ -36,7 +36,7 @@ let objects: {
 const init = () => {
   gsap.ticker.add(tick);
   initObjects();
-  shadow.init();
+  // shadow.init();
   desktops.init();
   messagePopup.init();
   if (objects?.mouse) mouse.init(objects.mouse);
@@ -105,7 +105,7 @@ const tick = () => {
 
 const destroy = () => {
   gsap.ticker.remove(tick);
-  shadow.destroy();
+  // shadow.destroy();
   //group.clear();
   //objects = null;
   desktops.destroy();
