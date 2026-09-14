@@ -4,30 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>David Heckhoff - Web Developer (WebGL & Node.js)</title>
+    <title>Jessie Canchola - Web Developer</title>
     <meta
       name="description"
       content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
     />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://david-hckh.com/" />
+    <link rel="canonical" href="https://jeszDev.dev/" />
 
     <meta property="og:title" content="David Heckhoff - Web Developer (WebGL & Node.js)" />
-    <meta
-      property="og:description"
-      content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
-    />
+    <meta property="og:description" content="Web developer." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://david-hckh.com/" />
-    <meta property="og:image" content="https://david-hckh.com/meta/og-image.webp" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="David Heckhoff - Web Developer (WebGL & Node.js)" />
-    <meta
-      name="twitter:description"
-      content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
-    />
-    <meta name="twitter:image" content="https://david-hckh.com/meta/twitter-image.webp" />
+    <meta property="og:url" content="https://jeszDev.dev/" />
+    <meta property="og:image" content="https://jeszDev.dev/meta/og-image.webp" />
 
     <link rel="preload" href="/fonts/urbanist-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/urbanist-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -41,24 +30,46 @@
 
     <meta name="theme-color" content="#dfd1bc" />
   </head>
-  <body class="is-loading">    
-    <svg style="display: none;" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+  <body class="is-loading">
+    <svg style="display: none" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&amp;family=VT323&amp;display=swap');
-          .base-text { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 50px; fill: currentColor; }
-          .prompt { font-family: 'VT323', monospace; font-size: 64px; fill: #F97316; }
-          .cursor { animation: blink 1s steps(1, end) infinite; }
-          @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+          @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&amp;family=VT323&amp;display=swap");
+          .base-text {
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 600;
+            font-size: 50px;
+            fill: currentColor;
+          }
+          .prompt {
+            font-family: "VT323", monospace;
+            font-size: 64px;
+            fill: #f97316;
+          }
+          .cursor {
+            animation: blink 1s steps(1, end) infinite;
+          }
+          @keyframes blink {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0;
+            }
+          }
         </style>
         <g id="logo-path">
           <text x="25" y="65">
-            <tspan class="base-text">jesz</tspan><tspan class="prompt">&gt;</tspan><tspan class="prompt cursor">_</tspan><tspan class="base-text">ev</tspan>
+            <tspan class="base-text">jesz</tspan>
+            <tspan class="prompt">&gt;</tspan>
+            <tspan class="prompt cursor">_</tspan>
+            <tspan class="base-text">ev</tspan>
           </text>
         </g>
       </defs>
     </svg>
-      
+
     <div id="app"></div>
     <div class="preloader">
       <svg class="preloader-svg" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
