@@ -76,12 +76,12 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
           </p>
           <Clickable renderAs="div">
             <Link
-              href="https://david-hckh.com"
+              href="https://jeszdev.dev"
               class="footer-link children-unclickable"
               external
               data-cursor="circle-white"
               data-hoversound="hover"
-              >David Heckhoff</Link
+              >Jessie Canchola</Link
             >
           </Clickable>
         </div>
@@ -100,7 +100,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             >
           </Clickable>
         </div>
-        <p>© {{ new Date().getFullYear() }} David Heckhoff</p>
+        <p>© {{ new Date().getFullYear() }} Jessie Canchola</p>
       </div>
     </div>
   </footer>
