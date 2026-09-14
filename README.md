@@ -6,16 +6,16 @@ Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Le
 
 ## Scripts
 
-| Command        | Description                          |
-| -------------- | ------------------------------------ |
-| `npm run dev`   | Dev server on port **3000** (`strictPort`) |
-| `npm run build` | `vue-tsc` then production bundle to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run typecheck` | Typecheck only (`vue-tsc -b`) |
+| Command             | Description                                 |
+| ------------------- | ------------------------------------------- |
+| `npm run dev`       | Dev server on port **3000** (`strictPort`)  |
+| `npm run build`     | `vue-tsc` then production bundle to `dist/` |
+| `npm run preview`   | Serve the production build locally          |
+| `npm run typecheck` | Typecheck only (`vue-tsc -b`)               |
 
 ## Content
 
-- **Projects**: `src/content/projects/{en,de}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
+- **Projects**: `src/content/projects/{es,en}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
 - **Previews / listing**: `src/content/projects/previews/`.
 - **Tags**: variants and labels live in `src/components/tagVariants.ts` (used by `Tag.vue` and content types).
 
@@ -27,17 +27,10 @@ Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Le
 
 ## Credits & Attribution
 
-This project was created and designed by David Heckhoff.
+This portfolio is developed by **Jessie Canchola** (`jeszDev`).
 
-If you use this project or substantial parts of its source code as a base for your own portfolio or work, attribution must be preserved.
+It was originally inspired by and based on the work of **David Heckhoff**. I used the original project as a learning resource to understand Three.js, GLSL shaders, GSAP animations, and project architecture.
 
-Please keep:
+The current version includes my own modifications, new models, textures, interactions, design decisions, and additional features.
 
-- existing credit comments in the source code
-- this attribution section in the README
-- a visible reference to the original project/repository in derivative works
-
-Original portfolio:
--> https://david-hckh.com
-
-Commercial reuse or redistribution of substantial portions of this project without permission is prohibited.
+- **Original Project & Portfolio:** [David Heckhoff](https://david-hckh.com)
