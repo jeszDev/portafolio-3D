@@ -5,7 +5,7 @@ uniform sampler2D uDiffuseMap;
 uniform float uProgress;
 
 #define COLOR_TOP vec3(0.,0.38,0.69)
-#define COLOR_CYAN vec3(0.27, 1.0, 1.0)
+#define COLOR_CYAN vec3(0.976, 0.451, 0.086)
 
 #define SHADOW_START -0.4
 #define SHADOW_END 0.
@@ -22,6 +22,8 @@ uniform float uProgress;
 void main() {
 
     vec4 diffuse = texture2D(uDiffuseMap, vUv);
+    // Convierte la textura azul en metal oscuro elegante
+    diffuse.rgb = vec3(dot(diffuse.rgb, vec3(0.299, 0.587, 0.114)) * 0.35);
 
     // Calculate distance from origin using model position, normalized by radius
     float dist = length(vPosition.xz) / RADIUS;
