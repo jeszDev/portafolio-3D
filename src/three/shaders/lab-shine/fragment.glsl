@@ -3,7 +3,7 @@ varying float vWave;
 
 uniform float uProgress;
 
-#define COLOR vec3(0.1,0.808,1.)
+#define COLOR vec3(0.976, 0.451, 0.086)
 
 void main() {
   // Reduce opacity where wave is positive (y going down)

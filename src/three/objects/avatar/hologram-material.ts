@@ -6,7 +6,8 @@ let material: ShaderMaterial;
 
 const uniforms = {
   uTime: { value: 0 },
-  uColor: { value: new Color("rgb(0, 234, 255)") },
+  uColor: { value: new Color("#f97316") },
+  uHeadColor: { value: new Color("#fff3e0") },
   uProgress: { value: 0 },
 };
 
