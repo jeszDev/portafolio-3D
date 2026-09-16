@@ -137,7 +137,7 @@ const skills = computed<SkillItem[]>(() => {
 <template>
   <ProjectedElement :point="point">
     <div ref="wrapperRef" class="box-services">
-      <TerminalWindow title="jesz@dev: ~/skills" badge="STACK" glow="cyan">
+      <TerminalWindow title="jesz@dev: ~/skills" badge="STACK" glow="orange">
         <div class="terminal-cli">
           <div class="terminal-cmd">
             <span class="prompt-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor">_</span>
@@ -217,8 +217,8 @@ const skills = computed<SkillItem[]>(() => {
     left: 0;
     width: 9px;
     height: 9px;
-    background-color: #38bdf8;
-    box-shadow: 0 0 8px #38bdf8;
+    background-color: #f97316;
+    box-shadow: 0 0 8px #f97316;
     border-radius: 50%;
   }
 
@@ -230,7 +230,7 @@ const skills = computed<SkillItem[]>(() => {
     transform: translateY(-50%);
     left: 0;
     height: 0;
-    border-top: 1px dashed rgba(56, 189, 248, 0.6);
+    border-top: 1px dashed rgba(249, 115, 22, 0.6);
 
     @include mixins.landscape {
       width: var(--line-length);
