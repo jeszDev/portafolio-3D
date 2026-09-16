@@ -8,7 +8,7 @@ import contactShadowTexture from "./assets/textures/contact-shadow.webp";
 import desktopsTexture from "./assets/textures/desktops.webp";
 import diffuseMap from "./assets/textures/diffuse-map.png";
 import faceTexture from "./assets/textures/face-spritesheet.png";
-import gokuTexture from "./assets/textures/goku.webp";
+import gokuTexture from "./assets/textures/goku_2040.webp";
 import headTexture from "./assets/textures/head.webp";
 import iconSpritesheet from "./assets/textures/icon-spritesheet.webp";
 import matcapBlack from "./assets/textures/matcap-black.webp";
