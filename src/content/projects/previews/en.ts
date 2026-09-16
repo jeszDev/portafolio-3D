@@ -1,47 +1,37 @@
 import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
-import thumbnailQuibbo from "../../../assets/thumbnails/quibbo.webp";
-//import thumbnailParticles from "../../../assets/thumbnails/particles.webp";
-import thumbnailPokedex from "../../../assets/thumbnails/pokedex.webp";
-import thumbnailSharkie from "../../../assets/thumbnails/sharkie.webp";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
+import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
+import thumbnailCadenaCustodia from "../../../assets/thumbnails/cadena-custodia.png";
 
 import type { ProjectPreview } from "../../types";
 
 export default [
   {
-    title: "StreakOn",
-    slug: "streakon",
+    title: "Clinical Practice Management System",
+    slug: "consultorio-medico",
     thumbnail: thumbnailStreakon,
-    description: "Social habit tracking app",
+    description: "Clinical platform for patient medical records, appointments, and consultation traceability",
+    tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },
   {
-    title: "CubeWar",
-    slug: "cubewar",
+    title: "Online Complaint Intake 2.0 (FGE)",
+    slug: "denuncia-en-linea",
     thumbnail: thumbnailCubeWar,
-    description: "Multiplayer strategy game",
+    description: "Institutional platform for citizen reports, official identity validation (RENAPO), and case intake",
+    tags: ["Laravel", "Livewire", "RENAPO API", "SQL Server"],
   },
   {
-    title: "Quibbo",
-    slug: "quibbo",
-    thumbnail: thumbnailQuibbo,
-    description: "Multiplayer gaming platform",
+    title: "ACCEIUS - Legal Case Management (FGE)",
+    slug: "acceius",
+    thumbnail: thumbnailAcceius,
+    description: "Comprehensive platform for judicial workflows, criminal investigations, and case files",
+    tags: ["Laravel", "Livewire", "SQL Server", "Multi-role"],
   },
   {
-    title: "Sharkie",
-    slug: "sharkie",
-    thumbnail: thumbnailSharkie,
-    description: "2D adventure game",
-  },
-  /**  {
-    title: "WebGL Particles",
-    slug: "particles",
-    thumbnail: thumbnailParticles,
-    description: "Dynamic 3D particles",
-  }, */
-  {
-    title: "Pokédex",
-    slug: "pokedex",
-    thumbnail: thumbnailPokedex,
-    description: "Open-source learning project",
+    title: "Chain of Custody & Evidence System (FGE)",
+    slug: "cadena-custodia",
+    thumbnail: thumbnailCadenaCustodia,
+    description: "Digital platform for forensic evidence tracking, custody logs, and official document generation",
+    tags: ["Laravel", "jQuery", "SQL Server"],
   },
 ] as const satisfies ProjectPreview[];

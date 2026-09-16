@@ -1,47 +1,37 @@
 import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
-import thumbnailQuibbo from "../../../assets/thumbnails/quibbo.webp";
-//import thumbnailParticles from "../../../assets/thumbnails/particles.webp";
-import thumbnailPokedex from "../../../assets/thumbnails/pokedex.webp";
-import thumbnailSharkie from "../../../assets/thumbnails/sharkie.webp";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
+import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
+import thumbnailCadenaCustodia from "../../../assets/thumbnails/cadena-custodia.png";
 
 import type { ProjectPreview } from "../../types";
 
 export default [
   {
-    title: "StreakOn",
-    slug: "streakon",
+    title: "Gestión de Consultorio Médico",
+    slug: "consultorio-medico",
     thumbnail: thumbnailStreakon,
-    description: "Social habit tracking app",
+    description: "Plataforma clínica para historial médico, citas y trazabilidad de consultas",
+    tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },
   {
-    title: "CubeWar",
-    slug: "cubewar",
+    title: "Denuncia en Línea 2.0 (Fiscalía)",
+    slug: "denuncia-en-linea",
     thumbnail: thumbnailCubeWar,
-    description: "Multiplayer strategy game",
+    description: "Sistema institucional para recepción, validación (RENAPO) y registro de denuncias",
+    tags: ["Laravel", "Livewire", "API RENAPO", "SQL Server"],
   },
   {
-    title: "Quibbo",
-    slug: "quibbo",
-    thumbnail: thumbnailQuibbo,
-    description: "Multiplayer gaming platform",
+    title: "ACCEIUS - Gestión Institucional (Fiscalía)",
+    slug: "acceius",
+    thumbnail: thumbnailAcceius,
+    description: "Plataforma integral de trazabilidad jurídica y carpetas de investigación",
+    tags: ["Laravel", "Livewire", "SQL Server", "Multirol"],
   },
   {
-    title: "Sharkie",
-    slug: "sharkie",
-    thumbnail: thumbnailSharkie,
-    description: "2D adventure game",
-  },
-  /**  {
-    title: "WebGL Particles",
-    slug: "particles",
-    thumbnail: thumbnailParticles,
-    description: "Dynamic 3D particles",
-  }, */
-  {
-    title: "Pokédex",
-    slug: "pokedex",
-    thumbnail: thumbnailPokedex,
-    description: "Open-source learning project",
+    title: "Sistema de Cadena de Custodia (Fiscalía)",
+    slug: "cadena-custodia",
+    thumbnail: thumbnailCadenaCustodia,
+    description: "Control digital, resguardo y trazabilidad forense de indicios y evidencias",
+    tags: ["Laravel", "jQuery", "SQL Server"],
   },
 ] as const satisfies ProjectPreview[];
