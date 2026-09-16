@@ -132,9 +132,14 @@ onMounted(() => {
       background-color 0.1s ease-in-out;
 
     &-dark {
-      background-color: var(--color-dark-blue-500);
-      color: var(--color-white-400);
+      background-color: rgba(13, 17, 23, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      color: rgba(255, 255, 255, 0.7);
     }
+
   }
 
   &-bar {
@@ -153,8 +158,11 @@ onMounted(() => {
     opacity: 0;
 
     &-dark {
-      background-color: var(--color-cyan-500);
+      background: #f97316;
+      box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
     }
+
+
 
     &-active {
       opacity: 1;

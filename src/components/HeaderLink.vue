@@ -48,9 +48,10 @@ const props = defineProps<{
 
   &-dark {
     &::after {
-      background-color: var(--color-dark-blue-600);
+      background-color: rgba(255, 255, 255, 0.08);
     }
   }
+
 
   &-active {
     &::after {
