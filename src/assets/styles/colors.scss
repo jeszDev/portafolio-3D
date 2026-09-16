@@ -1,22 +1,28 @@
 :root {
-  //--color-text-400: #001341;
-  --color-text-400: #2d2a24;
-  --color-text-300: #5f5646;
+  // Textos claros y legibles sobre fondo oscuro
+  --color-text-400: #f3f4f6; // Blanco titanio nítido
+  --color-text-300: #9ca3af; // Gris medio para textos secundarios
 
-  --color-grayscale-500: rgb(223, 210, 191);
-  --color-grayscale-400: rgb(233, 222, 208);
+  // Escala Obsidian (sustituye a los tonos beige/arena)
+  --color-grayscale-500: #242c3d;
+  --color-grayscale-400: #1a202c;
 
-  --color-beige-700: rgb(223, 209, 188);
-  --color-beige-600: rgb(233, 222, 208);
-  --color-beige-500: rgb(241, 229, 213);
-  --color-beige-400: #f5efe6;
+  --color-beige-700: #2a3344;
+  --color-beige-600: #1f2633;
+  --color-beige-500: #161b24;
+  --color-beige-400: #12161f;
 
-  --color-background-400: #f5efe6;
+  // Fondo principal del sitio en Negro Obsidian
+  --color-background-400: #0a0c10;
 
-  --color-black-400: #2d2a24;
+  --color-black-400: #05070a;
 
-  --color-gray-500: #67727c;
-  --color-gray-400: #a9b0b7;
+  --color-gray-500: #6b7280;
+  --color-gray-400: #9ca3af;
+
+  --color-orange-400: #ff8400;
+
+  --color-white-400: #ffffff;
 
   --color-orange-400: #ff8400;
 

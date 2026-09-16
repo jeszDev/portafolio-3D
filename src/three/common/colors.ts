@@ -1,6 +1,6 @@
 import { Color } from "three";
 
 export const colors = {
-  beigeDark: new Color("rgb(233, 222, 208)"),
-  beigeLight: new Color("#f5efe6"),
+  beigeDark: new Color("#06070a"),
+  beigeLight: new Color("#0a0c10"),
 };
