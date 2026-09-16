@@ -75,8 +75,11 @@ watchEffect((onInvalidate) => {
 
   &-background {
     position: absolute;
-    outline: var(--stroke-lg) solid var(--color-beige-400);
-    background-color: #263c70;
+    // Borde sutil y fondo naranja neón con resplandor
+    outline: 2px solid rgba(249, 115, 22, 0.4);
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.5);
+    border-radius: 4px;
     top: 0;
     left: 0;
     width: 100%;
@@ -103,10 +106,11 @@ watchEffect((onInvalidate) => {
   }
 
   &-copy {
-    font-weight: 700;
-    color: var(--color-white-400);
-    font-family: "ProFontWindows";
+    font-weight: 800;
+    color: #0a0c10; // Texto negro Obsidian para máximo contraste
+    font-family: "Fira Code", monospace;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
 
     &-size {
       &-sm {
