@@ -115,7 +115,7 @@ const SKILLS_EN: SkillItem[] = [
   { name: "Laravel & Livewire", tag: "BACK" },
   { name: "Vue 3 & TypeScript", tag: "FRONT" },
   { name: "MySQL & SQL server", tag: "DB" },
-  { name: "Tailwind CSS & Alpine.js", tag: "DB" },
+  { name: "Tailwind CSS & Alpine.js", tag: "UI" },
   { name: "Git & GitHub", tag: "TOOLS" },
   { name: "Docker & Nuxt", tag: "LEARNING" },
 ];
@@ -124,7 +124,7 @@ const SKILLS_ES: SkillItem[] = [
   { name: "Laravel & Livewire", tag: "BACK" },
   { name: "Vue 3 & TypeScript", tag: "FRONT" },
   { name: "MySQL & SQL server", tag: "DB" },
-  { name: "Tailwind CSS & Alpine.js", tag: "DB" },
+  { name: "Tailwind CSS & Alpine.js", tag: "UI" },
   { name: "Git & GitHub", tag: "TOOLS" },
   { name: "Docker & Nuxt", tag: "LEARNING" },
 ];
