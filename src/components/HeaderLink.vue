@@ -40,7 +40,7 @@ const props = defineProps<{
     transition:
       background-color 0.1s ease-in-out,
       opacity 0.1s ease-in-out;
-    background-color: var(--color-text-400);
+    background-color: rgba(255, 255, 255, 0.12);
     border-radius: 100px;
     z-index: -1;
     opacity: 0;
@@ -61,7 +61,7 @@ const props = defineProps<{
 
   @include mixins.hover {
     &:hover {
-      color: var(--color-white-400);
+      color: #ffffff;
 
       &::after {
         opacity: 1;

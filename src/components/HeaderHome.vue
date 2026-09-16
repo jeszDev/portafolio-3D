@@ -124,9 +124,13 @@ onMounted(() => {
     position: relative;
     display: flex;
     padding: 3px;
-    background-color: var(--color-beige-500);
+    background-color: rgba(13, 17, 23, 0.75); // Fondo glassmorphism siempre
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     border-radius: 100px;
-    color: var(--color-text-400);
+    color: rgba(255, 255, 255, 0.7);
     transition:
       color 0.1s ease-in-out,
       background-color 0.1s ease-in-out;
