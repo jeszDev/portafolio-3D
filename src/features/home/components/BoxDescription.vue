@@ -110,15 +110,15 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
             </div>
             <div class="json-line indent">
               <span class="json-key">"name"</span><span class="json-colon">:</span>
-              <span class="json-val-str">"Jessie"</span><span class="json-comma">,</span>
+              <span class="json-val-str">"Jessie Canchola"</span><span class="json-comma">,</span>
+            </div>
+            <div class="json-line indent">
+              <span class="json-key">"nickname"</span><span class="json-colon">:</span>
+              <span class="json-val-str">"jeszDev"</span><span class="json-comma">,</span>
             </div>
             <div class="json-line indent">
               <span class="json-key">"role"</span><span class="json-colon">:</span>
-              <span class="json-val-str">"Fullstack &amp; 3D Developer"</span><span class="json-comma">,</span>
-            </div>
-            <div class="json-line indent">
-              <span class="json-key">"location"</span><span class="json-colon">:</span>
-              <span class="json-val-str">"{{ t('germany') }} 📍"</span><span class="json-comma">,</span>
+              <span class="json-val-str">"Fullstack"</span><span class="json-comma">,</span>
             </div>
             <div class="json-line indent json-bio">
               <span class="json-key">"bio"</span><span class="json-colon">:</span>
