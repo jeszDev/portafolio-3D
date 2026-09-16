@@ -76,6 +76,15 @@ onUnmounted(() => {
         <h3 class="preview-card-title">{{ props.preview.title }}</h3>
         <p class="preview-card-description">{{ props.preview.description }}</p>
       </div>
+
+      <div v-if="props.preview.tags && props.preview.tags.length" class="preview-card-tags">
+        <span
+          v-for="tag in props.preview.tags"
+          :key="tag"
+          class="preview-card-tag">
+          {{ tag }}
+        </span>
+      </div>
     </div>
   </Link>
 
@@ -108,17 +117,24 @@ onUnmounted(() => {
   &::after {
     content: "";
     position: absolute;
-    top: -8px;
-    left: -8px;
-    width: calc(100% + 16px);
-    height: calc(100% + 16px);
-    background-color: var(--color-grayscale-400);
-    border-radius: var(--radius-xl);
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: rgba(18, 22, 31, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(249, 115, 22, 0.35); // Borde neón sutil naranja
+    box-shadow: 
+      0 12px 32px rgba(0, 0, 0, 0.5),
+      0 0 24px rgba(249, 115, 22, 0.15); // Glow naranja tenue
+    border-radius: calc(var(--radius-xl) + 4px);
     z-index: -1;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
+
 
   @include mixins.hover {
     &:hover {
@@ -229,13 +245,44 @@ onUnmounted(() => {
   &-title {
     font-size: var(--font-size-title-xs);
     font-weight: 700;
-    color: var(--color-text-400);
+    color: #f3f4f6;
+    transition: color 0.2s ease;
+  }
+  
+  &:hover &-title {
+    color: #f97316;
   }
 
   &-description {
     font-size: var(--font-size-md);
     color: var(--color-text-300);
     font-weight: 500;
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  &-tag {
+    font-family: "Fira Code", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #38bdf8; // Azul cian moderno
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  &:hover &-tag {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.15);
+    color: #ffffff;
   }
 }
 </style>
