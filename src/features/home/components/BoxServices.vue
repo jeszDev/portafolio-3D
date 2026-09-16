@@ -2,11 +2,11 @@
 import { computed, ref, watchEffect, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 import { locale } from "../../../i18n/store";
-import { t } from "../../../i18n/utils/translate";
 import AppearingText from "../../../components/AppearingText.vue";
 import { BREAKPOINTS } from "../../../utils/sizes";
 import { Vector3 } from "three";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
+import TerminalWindow from "../../../components/TerminalWindow.vue";
 
 const point = new Vector3(0.75, 2.75, 6.75);
 
@@ -106,60 +106,70 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
   timelines.value = updatedTimelines;
 };
 
-const SERVICES_EN = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Real-time Multiplayer" },
-] as const satisfies { name: string }[];
+interface SkillItem {
+  name: string;
+  tag: string;
+}
 
-const SERVICES_DE = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Echtzeit-Mehrspieler" },
-] as const satisfies { name: string }[];
+const SKILLS_EN: SkillItem[] = [
+  { name: "Three.js & WebGL", tag: "3D" },
+  { name: "Vue 3 & React", tag: "FRONT" },
+  { name: "Laravel & Node.js", tag: "BACK" },
+  { name: "Kubernetes & Redis", tag: "CLOUD" },
+  { name: "Real-time Multiplayer", tag: "SOCKET" },
+];
 
-const SERVICES_ES = [
-  { name: "Laravel" },
-  { name: "Vue" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Echtzeit-Mehrspieler" },
-] as const satisfies { name: string }[];
+const SKILLS_ES: SkillItem[] = [
+  { name: "Three.js & WebGL", tag: "3D" },
+  { name: "Vue 3 & React", tag: "FRONT" },
+  { name: "Laravel & Node.js", tag: "BACK" },
+  { name: "Kubernetes & Redis", tag: "CLOUD" },
+  { name: "Tiempo real & WebSockets", tag: "SOCKET" },
+];
 
-const services = computed(() => {
-  return locale.value === "es" ? SERVICES_ES : SERVICES_EN;
+const skills = computed<SkillItem[]>(() => {
+  if (locale.value === "es") return SKILLS_ES;
+  if (locale.value === "en") return SKILLS_EN;
+  return SKILLS_ES;
 });
 </script>
 
 <template>
   <ProjectedElement :point="point">
     <div ref="wrapperRef" class="box-services">
-      <div class="box-services-content">
-        <div class="box-services-title">
-          <AppearingText
-            :text="t('services')"
-            :steps="1"
-            :duration="0.35"
-            @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0)"
-          />
-        </div>
-        <div class="box-services-list">
-          <div class="box-services-list-item" v-for="(service, index) in services" :key="service.name">
-            <p class="box-services-list-item-name">
-              <AppearingText
-                :text="service.name"
-                :steps="1"
-                :duration="0.35"
-                @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0.15 + index * 0.1)"
-              />
-            </p>
+      <TerminalWindow title="jesz@dev: ~/skills" badge="STACK" glow="cyan">
+        <div class="terminal-cli">
+          <div class="terminal-cmd">
+            <span class="prompt-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor">_</span>
+            <span class="cmd-text">pnpm list --skills</span>
+          </div>
+
+          <div class="skills-tree">
+            <div
+              v-for="(skill, index) in skills"
+              :key="skill.name"
+              class="skill-row"
+            >
+              <!-- Rama del árbol: la última usa └──, las demás ├── -->
+              <span class="tree-branch">{{ index === skills.length - 1 ? '└──' : '├──' }}</span>
+              <span class="skill-check">[✓]</span>
+              <span class="skill-name">
+                <AppearingText
+                  :text="skill.name"
+                  :steps="1"
+                  :duration="0.35"
+                  @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0.15 + index * 0.1)"
+                />
+              </span>
+              <span class="skill-tag">[{{ skill.tag }}]</span>
+            </div>
+          </div>
+          
+          <div class="terminal-prompt-end">
+            <span class="prompt-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor prompt-blink">_</span>
           </div>
         </div>
-      </div>
+      </TerminalWindow>
     </div>
   </ProjectedElement>
 </template>
@@ -175,7 +185,7 @@ const services = computed(() => {
 
   @include mixins.landscape {
     width: 480px;
-    max-width: calc(var(--svw) * 37);
+    max-width: calc(var(--svw) * 38);
     padding-left: var(--line-length);
     position: relative;
     left: 0;
@@ -185,8 +195,8 @@ const services = computed(() => {
   }
 
   @include mixins.landscape-large {
-    width: 380px;
-    max-width: calc(var(--svw) * 36);
+    width: 420px;
+    max-width: calc(var(--svw) * 34);
   }
 
   &::after,
@@ -198,18 +208,21 @@ const services = computed(() => {
     }
   }
 
+  // Nodo conector cian neón al avatar
   &::after {
     content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 0;
-    width: 11px;
-    height: 11px;
-    background-color: var(--color-cyan-400);
+    width: 9px;
+    height: 9px;
+    background-color: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
     border-radius: 50%;
   }
 
+  // Línea conectora punteada
   &::before {
     content: "";
     position: absolute;
@@ -217,78 +230,130 @@ const services = computed(() => {
     transform: translateY(-50%);
     left: 0;
     height: 0;
-    border-top: var(--stroke-sm) solid var(--color-cyan-400);
+    border-top: 1px dashed rgba(56, 189, 248, 0.6);
 
     @include mixins.landscape {
       width: var(--line-length);
     }
   }
+}
 
-  &-content {
-    border: var(--stroke-sm) solid var(--color-cyan-400);
-    border-radius: var(--radius-md);
-    background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
+.terminal-cli {
+  font-family: "Fira Code", monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    @include mixins.landscape {
-      padding: var(--space-xs) var(--space-sm);
+.terminal-cmd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+
+  .cmd-text {
+    color: #e5e7eb;
+    font-weight: 500;
+  }
+}
+
+.prompt-user {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.prompt-arrow {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.prompt-cursor {
+  color: #f97316;
+  font-weight: 700;
+
+  &.prompt-blink {
+    animation: blink-cursor 1s steps(1, end) infinite;
+  }
+}
+
+// Árbol de dependencias
+.skills-tree {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+
+  // Micro-interacción: hover neón
+  &:hover {
+    background: rgba(56, 189, 248, 0.1);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.12);
+
+    .skill-name {
+      color: #ffffff;
     }
 
-    @include mixins.mq("md") {
-      padding: var(--space-sm) var(--space-md);
+    .skill-tag {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.4);
     }
   }
 
-  &-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-
-    &-item {
-      display: flex;
-      flex-direction: column;
-      padding-left: 18px;
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        left: 2px;
-        top: 6px;
-        width: 4px;
-        height: 4px;
-        background-color: var(--color-text-cyan-400);
-        border-radius: 50%;
-      }
-
-      &-name {
-        font-size: var(--font-size-md);
-
-        @include mixins.landscape {
-          font-size: var(--font-size-sm);
-        }
-
-        @include mixins.landscape-large {
-          font-size: var(--font-size-lg);
-        }
-      }
-    }
+  .tree-branch {
+    color: rgba(255, 255, 255, 0.28);
+    font-size: 10px;
   }
 
-  &-title {
-    font-size: var(--font-size-title-xs);
+  .skill-check {
+    color: #10b981;
     font-weight: 700;
+    font-size: 10.5px;
+  }
 
-    @include mixins.landscape {
-      font-size: var(--font-size-title-xxs);
-    }
+  .skill-name {
+    color: #e2e8f0;
+    flex: 1;
+  }
 
-    @include mixins.landscape-large {
-      font-size: var(--font-size-title-xs);
-    }
+  .skill-tag {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: rgba(56, 189, 248, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 3px;
+    padding: 0 4px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+}
+
+.terminal-prompt-end {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 </style>
