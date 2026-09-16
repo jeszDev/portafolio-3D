@@ -112,19 +112,21 @@ interface SkillItem {
 }
 
 const SKILLS_EN: SkillItem[] = [
-  { name: "Three.js & WebGL", tag: "3D" },
-  { name: "Vue 3 & React", tag: "FRONT" },
-  { name: "Laravel & Node.js", tag: "BACK" },
-  { name: "Kubernetes & Redis", tag: "CLOUD" },
-  { name: "Real-time Multiplayer", tag: "SOCKET" },
+  { name: "Laravel & Livewire", tag: "BACK" },
+  { name: "Vue 3 & TypeScript", tag: "FRONT" },
+  { name: "MySQL & SQL server", tag: "DB" },
+  { name: "Tailwind CSS & Alpine.js", tag: "DB" },
+  { name: "Git & GitHub", tag: "TOOLS" },
+  { name: "Docker & Nuxt", tag: "LEARNING" },
 ];
 
 const SKILLS_ES: SkillItem[] = [
-  { name: "Three.js & WebGL", tag: "3D" },
-  { name: "Vue 3 & React", tag: "FRONT" },
-  { name: "Laravel & Node.js", tag: "BACK" },
-  { name: "Kubernetes & Redis", tag: "CLOUD" },
-  { name: "Tiempo real & WebSockets", tag: "SOCKET" },
+  { name: "Laravel & Livewire", tag: "BACK" },
+  { name: "Vue 3 & TypeScript", tag: "FRONT" },
+  { name: "MySQL & SQL server", tag: "DB" },
+  { name: "Tailwind CSS & Alpine.js", tag: "DB" },
+  { name: "Git & GitHub", tag: "TOOLS" },
+  { name: "Docker & Nuxt", tag: "TOOLS" },
 ];
 
 const skills = computed<SkillItem[]>(() => {
