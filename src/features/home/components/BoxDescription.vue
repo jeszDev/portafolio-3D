@@ -100,7 +100,7 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
       <TerminalWindow title="jesz@dev: ~/about" badge="PROFILE" glow="emerald" >
         <div class="terminal-cli">
           <div class="terminal-cmd">
-            <span class="promp-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor">_</span>
+            <span class="prompt-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor">_</span>
             <span class="cmd-text">cat profile.json</span>
           </div>
 
