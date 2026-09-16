@@ -1,7 +1,6 @@
 {
   "about": "About",
-  "about-intro": "Web developer specializing in interactive 3D web experiences and real-time systems.<br />Builds scalable, high-performance applications that combine engaging visuals with seamless functionality using WebGL, TypeScript, and Node.js.",
-  "about-tagline": "Builds interactive 3D experiences and real-time systems that are fast, responsive, and fun to use.",
+  "about-tagline": "Full Stack Developer focused on creating modern, fast, and scalable web applications with Laravel and Vue 3. Passionate about good software architecture and interactive experiences.",
   "back-to-home": "Back to home",
   "original-concept-by": "Originally created by",
   "contact": "Contact",
