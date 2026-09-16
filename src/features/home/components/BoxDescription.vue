@@ -6,7 +6,7 @@ import { Vector3 } from "three";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
 import { t } from "../../../i18n/utils/translate";
 import AppearingText from "../../../components/AppearingText.vue";
-import PinIcon from "../../../components/icons/Pin.vue";
+import TerminalWindow from "../../../components/TerminalWindow.vue";
 
 const point = new Vector3(-0.9, 2, 6.75);
 
@@ -97,24 +97,50 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
 <template>
   <ProjectedElement :point="point">
     <div ref="wrapperRef" class="box-description">
-      <div class="box-description-content">
-        <div class="box-description-details">
-          <p class="box-description-details-name">Jessie</p>
-          <div class="box-description-details-location">
-            <PinIcon class="box-description-details-location-icon" />
-            <p class="box-description-details-location-copy">{{ t("germany") }}</p>
+      <TerminalWindow title="jesz@dev: ~/about" badge="PROFILE" glow="emerald" >
+        <div class="terminal-cli">
+          <div class="terminal-cmd">
+            <span class="promp-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor">_</span>
+            <span class="cmd-text">cat profile.json</span>
+          </div>
+
+          <div class="json-viewer">
+            <div class="json-line">
+              <span class="json-brace">{</span>
+            </div>
+            <div class="json-line indent">
+              <span class="json-key">"name"</span><span class="json-colon">:</span>
+              <span class="json-val-str">"Jessie"</span><span class="json-comma">,</span>
+            </div>
+            <div class="json-line indent">
+              <span class="json-key">"role"</span><span class="json-colon">:</span>
+              <span class="json-val-str">"Fullstack &amp; 3D Developer"</span><span class="json-comma">,</span>
+            </div>
+            <div class="json-line indent">
+              <span class="json-key">"location"</span><span class="json-colon">:</span>
+              <span class="json-val-str">"{{ t('germany') }} 📍"</span><span class="json-comma">,</span>
+            </div>
+            <div class="json-line indent json-bio">
+              <span class="json-key">"bio"</span><span class="json-colon">:</span>
+              <span class="json-val-str">"</span>
+              <AppearingText
+                class="json-appearing-text"
+                :text="t('about-tagline')"
+                :steps="3"
+                :duration="0.7"
+                @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0)"
+              />
+              <span class="json-val-str">"</span>
+            </div>
+            <div class="json-line"><span class="json-brace">}</span></div>
+          </div>
+
+
+          <div class="terminal-prompt-end">
+            <span class="prompt-user">jesz</span><span class="prompt-arrow">&gt;</span><span class="prompt-cursor prompt-blink">_</span>
           </div>
         </div>
-        <div class="box-description-line"></div>
-        <div class="box-description-copy">
-          <AppearingText
-            :text="t('about-tagline')"
-            :steps="3"
-            :duration="0.7"
-            @timeline:created="(tl: gsap.core.Timeline) => handleTimelineCreated(tl, 0)"
-          />
-        </div>
-      </div>
+      </TerminalWindow>
     </div>
   </ProjectedElement>
 </template>
@@ -123,7 +149,6 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
 .box-description {
   --line-length: min(48px, calc(var(--svw) * 5));
 
-  gap: var(--space-xxs);
   position: absolute;
   bottom: var(--count-height);
   width: calc(100% - var(--space-outer) * 2);
@@ -141,50 +166,8 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
   }
 
   @include mixins.landscape-large {
-    width: 410px;
-    max-width: calc(var(--svw) * 32);
-  }
-
-  &-line {
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-cyan-400);
-
-    @include mixins.landscape {
-      display: none;
-    }
-  }
-
-  &-details {
-    padding: var(--space-sm) var(--space-md);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include mixins.landscape {
-      display: none;
-    }
-
-    &-name {
-      font-size: var(--font-size-title-xs);
-      font-weight: 700;
-    }
-
-    &-location {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xs);
-
-      &-icon {
-        width: var(--icon-size-xs);
-        --icon-color: var(--color-white-400);
-        transform: translateY(-1px);
-      }
-
-      &-copy {
-        font-size: var(--font-size-md);
-      }
-    }
+    width: 440px;
+    max-width: calc(var(--svw) * 34);
   }
 
   &::after,
@@ -196,18 +179,21 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
     }
   }
 
+  // Nodo conector verde esmeralda
   &::after {
     content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    width: 11px;
-    height: 11px;
-    background-color: var(--color-cyan-400);
+    width: 9px;
+    height: 9px;
+    background-color: #10b981;
+    box-shadow: 0 0 8px #10b981;
     border-radius: 50%;
   }
 
+  // Línea conectora punteada
   &::before {
     content: "";
     position: absolute;
@@ -216,36 +202,114 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
     right: 0;
     width: var(--line-length);
     height: 0;
-    border-top: var(--stroke-sm) solid var(--color-cyan-400);
+    border-top: 1px dashed rgba(16, 185, 129, 0.6);
+  }
+}
+
+// Tipografía y estructura de la terminal interna
+.terminal-cli {
+  font-family: "Fira Code", monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.terminal-cmd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+
+  .cmd-text {
+    color: #e5e7eb;
+    font-weight: 500;
+  }
+}
+
+.prompt-user {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.prompt-arrow {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.prompt-cursor {
+  color: #f97316;
+  font-weight: 700;
+
+  &.prompt-blink {
+    animation: blink-cursor 1s steps(1, end) infinite;
+  }
+}
+
+// Visor JSON con sintaxis coloreada
+.json-viewer {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 11px;
+  line-height: 1.55;
+
+  .json-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+
+    &.indent {
+      padding-left: 14px;
+    }
   }
 
-  &-content {
-    border: var(--stroke-sm) solid var(--color-cyan-400);
-    border-radius: var(--radius-md);
-    background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
-
-    @include mixins.landscape {
-      padding: var(--space-xs) var(--space-sm);
-
-      @include mixins.mq("md") {
-        padding: var(--space-sm) var(--space-md);
-      }
-    }
+  .json-brace {
+    color: #f3f4f6;
   }
 
-  &-copy {
-    will-change: opacity;
-    font-size: var(--font-size-md);
-    padding: var(--space-sm) var(--space-md);
+  .json-key {
+    color: #38bdf8; // Azul cian para las claves JSON
+  }
 
-    @include mixins.landscape {
-      padding: 0;
-      font-size: var(--font-size-sm);
-    }
+  .json-colon {
+    color: #9ca3af;
+    margin-right: 5px;
+  }
 
-    @include mixins.landscape-large {
-      font-size: var(--font-size-lg);
+  .json-val-str {
+    color: #34d399; // Verde esmeralda para los strings
+  }
+
+  .json-comma {
+    color: #6b7280;
+  }
+
+  .json-bio {
+    word-break: break-word;
+    align-items: flex-start;
+
+    .json-appearing-text {
+      color: #34d399;
+      display: inline;
     }
+  }
+}
+
+.terminal-prompt-end {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 </style>
