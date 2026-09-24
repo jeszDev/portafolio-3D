@@ -344,7 +344,12 @@ onUnmounted(() => {
 .social-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
+  width: 100%;
+
+  .contact-card {
+    width: 100%; // Siempre ocupa el ancho completo, alineado con el correo
+  }
 
   // En móvil (pantallas chicas), si hay 2 o más redes, se colocan en 2 columnas
   @media (max-width: 767px) {
