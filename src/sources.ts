@@ -1,10 +1,7 @@
 import avatarModel from "./assets/models/avatar.glb";
 import labModel from "./assets/models/lab.glb";
 import roomModel from "./assets/models/room.glb";
-import contactModel from "./assets/models/contact.glb";
 
-import contactTexture from "./assets/textures/contact.webp";
-import contactShadowTexture from "./assets/textures/contact-shadow.webp";
 import desktopsTexture from "./assets/textures/desktops.webp";
 import diffuseMap from "./assets/textures/diffuse-map.png";
 import faceTexture from "./assets/textures/face-spritesheet.png";
@@ -31,11 +28,8 @@ export const sources = [
   { name: "avatar-model", type: "gltfModel", path: avatarModel },
   { name: "lab-model", type: "gltfModel", path: labModel },
   { name: "room-model", type: "gltfModel", path: roomModel },
-  { name: "contact-model", type: "gltfModel", path: contactModel },
 
   //textures
-  { name: "contact-texture", type: "texture", path: contactTexture },
-  { name: "contact-shadow-texture", type: "texture", path: contactShadowTexture },
   { name: "desktops-texture", type: "texture", path: desktopsTexture },
   { name: "diffuse-map", type: "texture", path: diffuseMap },
   { name: "face-texture", type: "texture", path: faceTexture },

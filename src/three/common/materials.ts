@@ -7,7 +7,6 @@ import type { Material } from "three";
 
 let gokuMaterial: Material | null = null;
 let roomMaterial: Material | null = null;
-let contactMaterial: Material | null = null;
 let shadowMaterial: ShaderMaterial | null = null;
 
 export const getGokuMaterial = (): Material => {
@@ -28,16 +27,6 @@ export const getRoomMaterial = (): Material => {
   roomMaterial = new MeshBasicMaterial({ map: texture });
 
   return roomMaterial;
-};
-
-export const getContactMaterial = (): Material => {
-  if (contactMaterial) return contactMaterial;
-  const texture = resources.items["contact-texture"];
-  texture.flipY = false;
-
-  contactMaterial = new MeshBasicMaterial({ map: texture });
-
-  return contactMaterial;
 };
 
 export const getShadowMaterial = (): ShaderMaterial => {

@@ -31,7 +31,7 @@ const uniforms = { uFrame: { value: 0 } };
 
 const sceneFrames: Record<"intro" | "contact", keyof typeof FRAME_INDEXES> = {
   intro: "default-0",
-  contact: "sleeping",
+  contact: "proud-0",
 };
 
 const init = () => {

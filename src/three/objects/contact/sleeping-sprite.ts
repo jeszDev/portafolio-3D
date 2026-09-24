@@ -23,8 +23,8 @@ const uniforms = {
 };
 
 const init = () => {
-  gsap.ticker.add(tick);
-  initMesh();
+  // gsap.ticker.add(tick);
+  // initMesh();
 };
 
 const initMesh = () => {

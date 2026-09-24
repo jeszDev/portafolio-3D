@@ -21,8 +21,8 @@ const scheduleNextSnore = () => {
   });
 };
 
-scheduleNextSnore();
-playSound("snore");
+// scheduleNextSnore();
+// playSound("snore");
 
 export const tick = () => {
   const volume = projectVisible.value ? 0 : clamp(sceneWeights.contact * 0.5, 0, 1);

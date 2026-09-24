@@ -64,8 +64,8 @@ const setupActions = () => {
   const sleeping = mixer.clipAction(getActionFromMesh("sleeping"));
   sleeping.loop = LoopPingPong;
   actions.set("sleeping", sleeping);
-  sleeping.weight = 1;
-  sleeping.play();
+  sleeping.weight = 0;
+  // sleeping.play();
 
   //wake-up
   const wake = mixer.clipAction(getActionFromMesh("wake-up"));
@@ -77,6 +77,7 @@ const setupActions = () => {
   const contactIdle = mixer.clipAction(getActionFromMesh("contact-idle"));
   contactIdle.loop = LoopPingPong;
   actions.set("contact-idle", contactIdle);
+  contactIdle.play();
 
   //wave
   const wave = mixer.clipAction(getActionFromMesh("wave"));
@@ -169,39 +170,39 @@ const wave = () => {
 };
 
 const wakeUp = () => {
-  if (isAwake) return;
-  isAwake = true;
-  const sleepingAction = actions.get("sleeping");
-  const wakeUpAction = actions.get("wake-up");
-  const contactIdleAction = actions.get("contact-idle");
-  if (!sleepingAction || !wakeUpAction || !contactIdleAction) return;
+  // if (isAwake) return;
+  // isAwake = true;
+  // const sleepingAction = actions.get("sleeping");
+  // const wakeUpAction = actions.get("wake-up");
+  // const contactIdleAction = actions.get("contact-idle");
+  // if (!sleepingAction || !wakeUpAction || !contactIdleAction) return;
 
-  stopSnoreRepetition();
-  playSound("gasp");
+  // stopSnoreRepetition();
+  // playSound("gasp");
 
-  //crossfade to wake-up
-  sleepingAction.crossFadeTo(wakeUpAction, 0.2);
-  wakeUpAction.play();
+  // //crossfade to wake-up
+  // sleepingAction.crossFadeTo(wakeUpAction, 0.2);
+  // wakeUpAction.play();
 
-  const wakeUpDuration = wakeUpAction.getClip().duration;
+  // const wakeUpDuration = wakeUpAction.getClip().duration;
 
-  setTimeout(() => {
-    //crossfade to contact-idle
-    wakeUpAction.crossFadeTo(contactIdleAction, 0.5);
-    contactIdleAction.play();
-  }, wakeUpDuration * 1000);
+  // setTimeout(() => {
+  //   //crossfade to contact-idle
+  //   wakeUpAction.crossFadeTo(contactIdleAction, 0.5);
+  //   contactIdleAction.play();
+  // }, wakeUpDuration * 1000);
 
-  face.wakeUp();
-  sleepingSprite.hide();
+  // face.wakeUp();
+  // sleepingSprite.hide();
 };
 
 const updateContact = () => {
   setWeight("desktop-idle", 0);
   setWeight("left-desktop", 0);
   setWeight("t-idle", 0);
-  setWeight("sleeping", 1);
+  setWeight("sleeping", 0);
   setWeight("contact-idle", 1);
-  setWeight("wake-up", 1);
+  setWeight("wake-up", 0);
   setWeight("wave", 0);
 };
 
