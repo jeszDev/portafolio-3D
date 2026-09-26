@@ -8,17 +8,17 @@ import type { ProjectPreview } from "../../types";
 export default [
   {
     title: "Gestión de Consultorio Médico",
-    slug: "consultorio-medico",
+    slug: "medical-practice",
     thumbnail: thumbnailStreakon,
     description: "Plataforma clínica para historial médico, citas y trazabilidad de consultas",
     tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },
   {
     title: "Denuncia en Línea 2.0 (Fiscalía)",
-    slug: "denuncia-en-linea",
+    slug: "online-complaints",
     thumbnail: thumbnailCubeWar,
     description: "Sistema institucional para recepción, validación (RENAPO) y registro de denuncias",
-    tags: ["Laravel", "Livewire", "API RENAPO", "SQL Server"],
+    tags: ["Laravel", "JavaScript", "API RENAPO", "MySQL"],
   },
   {
     title: "ACCEIUS - Gestión Institucional (Fiscalía)",
@@ -29,9 +29,9 @@ export default [
   },
   {
     title: "Sistema de Cadena de Custodia (Fiscalía)",
-    slug: "cadena-custodia",
+    slug: "chain-of-custody",
     thumbnail: thumbnailCadenaCustodia,
     description: "Control digital, resguardo y trazabilidad forense de indicios y evidencias",
-    tags: ["Laravel", "jQuery", "SQL Server"],
+    tags: ["Laravel", "jQuery", "MySQL"],
   },
 ] as const satisfies ProjectPreview[];

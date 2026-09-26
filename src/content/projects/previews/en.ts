@@ -7,18 +7,18 @@ import type { ProjectPreview } from "../../types";
 
 export default [
   {
-    title: "Clinical Practice Management System",
-    slug: "consultorio-medico",
+    title: "Medical Practice Management System",
+    slug: "medical-practice",
     thumbnail: thumbnailStreakon,
     description: "Clinical platform for patient medical records, appointments, and consultation traceability",
     tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },
   {
     title: "Online Complaint Intake 2.0 (FGE)",
-    slug: "denuncia-en-linea",
+    slug: "online-complaints",
     thumbnail: thumbnailCubeWar,
     description: "Institutional platform for citizen reports, official identity validation (RENAPO), and case intake",
-    tags: ["Laravel", "Livewire", "RENAPO API", "SQL Server"],
+    tags: ["Laravel", "JavaScript", "RENAPO API", "MySQL"],
   },
   {
     title: "ACCEIUS - Legal Case Management (FGE)",
@@ -28,10 +28,10 @@ export default [
     tags: ["Laravel", "Livewire", "SQL Server", "Multi-role"],
   },
   {
-    title: "Chain of Custody & Evidence System (FGE)",
-    slug: "cadena-custodia",
+    title: "Chain of Custody Evidence System (FGE)",
+    slug: "chain-of-custody",
     thumbnail: thumbnailCadenaCustodia,
     description: "Digital platform for forensic evidence tracking, custody logs, and official document generation",
-    tags: ["Laravel", "jQuery", "SQL Server"],
+    tags: ["Laravel", "jQuery", "MySQL"],
   },
 ] as const satisfies ProjectPreview[];
