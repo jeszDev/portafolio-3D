@@ -27,6 +27,67 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
   }
 
   &-variant {
+    &-laravel {
+      background-color: #ff2d20;
+      color: white;
+    }
+
+    &-vue {
+      background-color: #4fc08d;
+      color: #0f2e22;
+    }
+
+    &-php {
+      background-color: #777bb4;
+      color: white;
+    }
+
+    &-mysql,
+    &-msyql {
+      background-color: #00758f;
+      color: white;
+    }
+
+    &-sqlserver {
+      background-color: #cc292b;
+      color: white;
+    }
+
+    &-bootstrap {
+      background-color: #7952b3;
+      color: white;
+    }
+
+    &-tailwind {
+      background-color: #06b6d4;
+      color: #052a30;
+    }
+
+    &-alpine {
+      background-color: #77c1d2;
+      color: #0a2f38;
+    }
+
+    &-livewire {
+      background-color: #fb70a9;
+      color: #3b091e;
+    }
+
+    &-jquery {
+      background-color: #0769ad;
+      color: white;
+    }
+
+    &-typescript {
+      background-color: #3178c6;
+      color: white;
+    }
+
+    &-javascript {
+      background-color: #ffdf4f;
+      color: #362d03;
+    }
+
     &-three {
       background-color: #ed9c55;
       color: #492708;
@@ -55,11 +116,6 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
     &-css {
       color: var(--color-text-400);
       border-color: var(--color-grayscale-400);
-    }
-
-    &-javascript {
-      background-color: #ffdf4f;
-      color: #362d03;
     }
 
     &-node {
