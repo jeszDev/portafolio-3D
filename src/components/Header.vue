@@ -96,7 +96,7 @@ const getInTouchClassNames = computed(() => {
       <Logo class="header-logo-image" />
     </div>
     <div class="header-right">
-      <Button
+      <!-- <Button
         renderAs="a"
         variant="accent"
         :aria-label="t('get-in-touch')"
@@ -106,7 +106,7 @@ const getInTouchClassNames = computed(() => {
         data-cursor="circle-white"
         data-hoversound="hover"
         >{{ t("get-in-touch") }}</Button
-      >
+      > -->
       <SoundsToggle class="header-sounds-toggle" :isDarkTheme="isDarkTheme" v-if="isFeatureEnabled('sounds')" />
     </div>
   </header>
