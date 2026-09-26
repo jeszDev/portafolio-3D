@@ -1,7 +1,7 @@
 import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
-import thumbnailCadenaCustodia from "../../../assets/thumbnails/cadena-custodia.png";
+import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
 
 import type { ProjectPreview } from "../../types";
 
@@ -30,7 +30,7 @@ export default [
   {
     title: "Sistema de Cadena de Custodia (Fiscalía)",
     slug: "chain-of-custody",
-    thumbnail: thumbnailCadenaCustodia,
+    thumbnail: thumbnailChainOfCustody,
     description: "Control digital, resguardo y trazabilidad forense de indicios y evidencias",
     tags: ["Laravel", "jQuery", "MySQL"],
   },

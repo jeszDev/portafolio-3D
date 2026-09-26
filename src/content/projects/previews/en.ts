@@ -1,7 +1,7 @@
 import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
-import thumbnailCadenaCustodia from "../../../assets/thumbnails/cadena-custodia.png";
+import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
 
 import type { ProjectPreview } from "../../types";
 
@@ -30,7 +30,7 @@ export default [
   {
     title: "Chain of Custody Evidence System (FGE)",
     slug: "chain-of-custody",
-    thumbnail: thumbnailCadenaCustodia,
+    thumbnail: thumbnailChainOfCustody,
     description: "Digital platform for forensic evidence tracking, custody logs, and official document generation",
     tags: ["Laravel", "jQuery", "MySQL"],
   },
