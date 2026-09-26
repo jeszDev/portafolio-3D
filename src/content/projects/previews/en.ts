@@ -1,4 +1,4 @@
-import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
+import thumbnailOnlineComplaint from "../../../assets/thumbnails/online-complaint.png";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
 import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
@@ -16,7 +16,7 @@ export default [
   {
     title: "Online Complaint Intake 2.0 (FGE)",
     slug: "online-complaints",
-    thumbnail: thumbnailCubeWar,
+    thumbnail: thumbnailOnlineComplaint,
     description: "Institutional platform for citizen reports, official identity validation (RENAPO), and case intake",
     tags: ["Laravel", "JavaScript", "RENAPO API", "MySQL"],
   },

@@ -1,4 +1,4 @@
-import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
+import thumbnailOnlineComplaint from "../../../assets/thumbnails/online-complaint.png";
 import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
 import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
@@ -16,7 +16,7 @@ export default [
   {
     title: "Denuncia en Línea 2.0 (Fiscalía)",
     slug: "online-complaints",
-    thumbnail: thumbnailCubeWar,
+    thumbnail: thumbnailOnlineComplaint,
     description: "Sistema institucional para recepción, validación (RENAPO) y registro de denuncias",
     tags: ["Laravel", "JavaScript", "API RENAPO", "MySQL"],
   },
