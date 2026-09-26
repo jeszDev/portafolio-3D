@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import Social from "./Social.vue";
-import Link from "./Link.vue";
-import Clickable from "./Clickable.vue";
 import LangSwitch from "./LangSwitch.vue";
 import NotchSection from "./NotchSection.vue";
 import ButtonRound from "./ButtonRound.vue";
 import ArrowRightLong from "./icons/ArrowRightLong.vue";
-import { t } from "../i18n/utils/translate";
-import { locale } from "../i18n/store";
 import { lenis } from "../composables/useScroll";
 
 interface Props {
@@ -15,7 +11,6 @@ interface Props {
 }
 
 const { withSocial = true } = defineProps<Props>();
-const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 
 const handleBackToTop = () => {
   if (!lenis.value) {
@@ -33,6 +28,8 @@ const handleBackToTop = () => {
     <div class="footer-container">
       <!-- Fila 1: Marca/Social y Botón Volver Arriba -->
       <div class="footer-row footer-row-top">
+        <div class="footer-top-spacer" aria-hidden="true"></div>
+
         <div class="footer-brand-group">
           <div class="footer-logo">
             jesz<span class="footer-logo-accent">&gt;_</span>ev
@@ -73,76 +70,9 @@ const handleBackToTop = () => {
       <div class="footer-row footer-row-bottom">
         <div class="footer-credits">
           <span class="footer-copy">© {{ new Date().getFullYear() }} Jessie Canchola</span>
-
-          <!-- <template v-if="showAttribution">
-            <span class="footer-sep">•</span>
-            <div class="footer-credits-item">
-              <span>{{ t("original-concept-by") }}</span>
-              <Clickable renderAs="span">
-                <Link
-                  href="https://jeszdev.dev"
-                  class="footer-link children-unclickable"
-                  external
-                  data-cursor="circle-white"
-                  data-hoversound="hover"
-                >
-                  Jessie Canchola
-                </Link>
-              </Clickable>
-            </div>
-          </template> -->
-
-          <!-- <span class="footer-sep">•</span> -->
-
-          <!-- <div class="footer-credits-item">
-            <span>{{ t("music-produced-by") }}</span>
-            <Clickable renderAs="span">
-              <Link
-                href="https://soundcloud.com/hmsurf"
-                class="footer-link children-unclickable"
-                external
-                data-cursor="circle-white"
-                data-hoversound="hover"
-              >
-                HM Surf
-              </Link>
-            </Clickable>
-          </div> -->
         </div>
 
         <div class="footer-actions">
-          <!-- <div class="footer-legal">
-            <Clickable renderAs="div">
-              <Link
-                :href="locale === 'de' ? '/de/privacy' : '/privacy'"
-                class="footer-link"
-                :external="true"
-                data-cursor="circle-white"
-                data-sound="click"
-                data-hoversound="hover"
-              >
-                {{ t("privacy") }}
-              </Link>
-            </Clickable>
-
-            <span class="footer-sep">•</span>
-
-            <Clickable renderAs="div">
-              <Link
-                :href="locale === 'de' ? '/de/legal' : '/legal'"
-                class="footer-link children-unclickable"
-                :external="true"
-                data-cursor="circle-white"
-                data-sound="click"
-                data-hoversound="hover"
-              >
-                {{ t("legal") }}
-              </Link>
-            </Clickable>
-          </div> -->
-
-          <!-- <span class="footer-sep footer-sep-lang">•</span> -->
-
           <LangSwitch />
         </div>
       </div>
@@ -191,11 +121,15 @@ const handleBackToTop = () => {
     justify-content: space-between;
 
     &-top {
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
       gap: var(--space-md);
+      width: 100%;
 
       @include mixins.mq("sm") {
-        flex-direction: row;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
       }
     }
 
@@ -212,11 +146,21 @@ const handleBackToTop = () => {
     }
   }
 
+  &-top-spacer {
+    display: none;
+
+    @include mixins.mq("sm") {
+      display: block;
+    }
+  }
+
   /* Marca & Redes */
   &-brand-group {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-lg);
+    justify-self: center;
   }
 
   &-logo {
@@ -244,13 +188,18 @@ const handleBackToTop = () => {
     cursor: pointer;
     user-select: none;
     transition: all 0.25s ease;
+    justify-self: center;
+
+    @include mixins.mq("sm") {
+      justify-self: end;
+    }
 
     @include mixins.hover {
       &:hover {
         color: var(--color-accent-400, var(--color-orange-400));
 
         .footer-back-to-top-icon {
-          transform: rotate(-90deg) translateY(-2px);
+          // transform: rotate(-90deg) translateY(-2px);
         }
 
         .footer-back-to-top-btn {
