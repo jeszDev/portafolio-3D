@@ -1,15 +1,15 @@
-import thumbnailOnlineComplaint from "../../../assets/thumbnails/online-complaint.png";
-import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
 import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
+import thumbnailLatidos from "../../../assets/thumbnails/latidos.png";
+import thumbnailOnlineComplaint from "../../../assets/thumbnails/online-complaint.png";
 
 import type { ProjectPreview } from "../../types";
 
 export default [
   {
-    title: "Medical Practice Management System",
-    slug: "medical-practice",
-    thumbnail: thumbnailStreakon,
+    title: "Latidos - Medical Practice Management System",
+    slug: "latidos",
+    thumbnail: thumbnailLatidos,
     description: "Clinical platform for patient medical records, appointments, and consultation traceability",
     tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },

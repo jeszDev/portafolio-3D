@@ -1,7 +1,7 @@
 import type { Locale } from "../../i18n/types";
 
 export const projectIds = [
-  "medical-practice",
+  "latidos",
   "online-complaints",
   "acceius",
   "chain-of-custody",

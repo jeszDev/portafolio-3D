@@ -1,7 +1,7 @@
 import type { ProjectContent } from "../../types";
 
 export default {
-  title: "Medical Practice Management System",
+  title: "Latidos",
   theme: "dark",
   tags: ["laravel", "vue", "typescript", "mysql"],
   description:

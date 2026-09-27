@@ -1,7 +1,7 @@
 import type { ProjectContent } from "../../types";
 
 export default {
-  title: "Sistema de Gestión de Consultorio Médico",
+  title: "Latidos",
   theme: "dark",
   tags: ["laravel", "vue", "typescript", "mysql"],
   description:

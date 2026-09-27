@@ -1,5 +1,5 @@
 import thumbnailOnlineComplaint from "../../../assets/thumbnails/online-complaint.png";
-import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
+import thumbnailLatidos from "../../../assets/thumbnails/latidos.png";
 import thumbnailAcceius from "../../../assets/thumbnails/acceius.png";
 import thumbnailChainOfCustody from "../../../assets/thumbnails/chain-of-custody.png";
 
@@ -7,9 +7,9 @@ import type { ProjectPreview } from "../../types";
 
 export default [
   {
-    title: "Gestión de Consultorio Médico",
-    slug: "medical-practice",
-    thumbnail: thumbnailStreakon,
+    title: "Latidos - Gestión de Consultorio Médico",
+    slug: "latidos",
+    thumbnail: thumbnailLatidos,
     description: "Plataforma clínica para historial médico, citas y trazabilidad de consultas",
     tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
   },
