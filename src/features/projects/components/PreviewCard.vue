@@ -10,6 +10,7 @@ import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
 
+import Tag from "../../../components/Tag.vue";
 import type { ProjectPreview } from "../../../content/types";
 
 const tlRef = ref<gsap.core.Timeline | null>(null);
@@ -78,12 +79,7 @@ onUnmounted(() => {
       </div>
 
       <div v-if="props.preview.tags && props.preview.tags.length" class="preview-card-tags">
-        <span
-          v-for="tag in props.preview.tags"
-          :key="tag"
-          class="preview-card-tag">
-          {{ tag }}
-        </span>
+        <Tag v-for="tag in props.preview.tags" :key="tag" :variant="tag" />
       </div>
     </div>
   </Link>
@@ -264,25 +260,6 @@ onUnmounted(() => {
     flex-wrap: wrap;
     gap: 6px;
     margin-top: 6px;
-  }
-
-  &-tag {
-    font-family: "Fira Code", monospace;
-    font-size: 11px;
-    font-weight: 600;
-    color: #38bdf8; // Azul cian moderno
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 4px;
-    padding: 2px 8px;
-    letter-spacing: 0.02em;
-    transition: all 0.2s ease;
-  }
-
-  &:hover &-tag {
-    border-color: rgba(56, 189, 248, 0.5);
-    background: rgba(56, 189, 248, 0.15);
-    color: #ffffff;
   }
 }
 </style>

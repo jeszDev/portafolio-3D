@@ -26,5 +26,5 @@ export interface ProjectPreview {
   slug: string;
   thumbnail: string;
   description: string;
-  tags?: string[];
+  tags?: TagVariant[];
 }

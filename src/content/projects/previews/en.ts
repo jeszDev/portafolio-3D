@@ -8,30 +8,30 @@ import type { ProjectPreview } from "../../types";
 export default [
   {
     title: "Latidos - Medical Practice Management System",
-    slug: "latidos",
+    slug: "medical-practice",
     thumbnail: thumbnailLatidos,
     description: "Clinical platform for patient medical records, appointments, and consultation traceability",
-    tags: ["Laravel", "Vue.js", "TypeScript", "SQL"],
+    tags: ["laravel", "vue", "typescript", "mysql",  "tailwind"],
   },
   {
     title: "Online Complaint Intake 2.0 (FGE)",
     slug: "online-complaints",
     thumbnail: thumbnailOnlineComplaint,
     description: "Institutional platform for citizen reports, official identity validation (RENAPO), and case intake",
-    tags: ["Laravel", "JavaScript", "RENAPO API", "MySQL"],
+    tags: ["laravel", "php", "javascript", "bootstrap", "sqlserver"],
   },
   {
     title: "ACCEIUS - Legal Case Management (FGE)",
     slug: "acceius",
     thumbnail: thumbnailAcceius,
     description: "Comprehensive platform for judicial workflows, criminal investigations, and case files",
-    tags: ["Laravel", "Livewire", "SQL Server", "Multi-role"],
+    tags: ["laravel", "php", "livewire", "alpine", "bootstrap", "sqlserver"],
   },
   {
     title: "Chain of Custody Evidence System (FGE)",
     slug: "chain-of-custody",
     thumbnail: thumbnailChainOfCustody,
     description: "Digital platform for forensic evidence tracking, custody logs, and official document generation",
-    tags: ["Laravel", "jQuery", "MySQL"],
+    tags: ["laravel", "php", "jquery", "bootstrap", "sqlserver"],
   },
 ] as const satisfies ProjectPreview[];
