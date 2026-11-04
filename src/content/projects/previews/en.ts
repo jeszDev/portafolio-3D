@@ -8,7 +8,7 @@ import type { ProjectPreview } from "../../types";
 export default [
   {
     title: "Latidos - Medical Practice Management System",
-    slug: "medical-practice",
+    slug: "latidos",
     thumbnail: thumbnailLatidos,
     description: "Clinical platform for patient medical records, appointments, and consultation traceability",
     tags: ["laravel", "vue", "typescript", "mysql",  "tailwind"],

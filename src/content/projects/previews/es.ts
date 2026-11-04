@@ -8,7 +8,7 @@ import type { ProjectPreview } from "../../types";
 export default [
   {
     title: "Latidos - Gestión de Consultorio Médico",
-    slug: "medical-practice",
+    slug: "latidos",
     thumbnail: thumbnailLatidos,
     description: "Plataforma clínica para historial médico, citas y trazabilidad de consultas",
     tags: ["laravel", "vue", "typescript", "mysql", "tailwind"],
