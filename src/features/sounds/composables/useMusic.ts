@@ -1,62 +1,100 @@
-import { onMounted, onUnmounted, watchEffect } from "vue";
-import { path } from "../../../composables/useRouteObserver";
-import gsap from "gsap";
-import { BASE_VOLUMES, musicTracks } from "../definitions/music";
-import { sceneWeights } from "../../../animations/scenes";
-import { sizes } from "../../../utils/sizes";
+import { onUnmounted, ref, watch } from "vue";
+import { musicPlaylist, type MusicTrackItem } from "../definitions/music";
 import { howlerUnlocked, soundsEnabled } from "./useHowler";
-import { clamp } from "../../../utils/math";
 import { isFeatureEnabled } from "../../../utils/features";
 import { useAgent } from "../../../composables/useAgent";
 
-import type { MusicTrack } from "../types";
-
 export const useMusic = () => {
   const { isTouch } = useAgent();
+  const currentTrack = ref<MusicTrackItem | null>(null);
+  let pauseTimeout: ReturnType<typeof setTimeout> | null = null;
 
-  const tickVolumes = () => {
-    // If not on home route, always use base volume
-    if (path.value !== "/") {
-      musicTracks.luci.volume(BASE_VOLUMES.luci);
-      musicTracks.about.volume(0);
-      return;
+  const getRandomTrack = (previousId?: string): MusicTrackItem | null => {
+    if (!musicPlaylist.length) return null;
+    if (musicPlaylist.length === 1) return musicPlaylist[0];
+
+    // Filter out previous track to avoid consecutive repetition
+    const candidates = musicPlaylist.filter((track) => track.id !== previousId);
+    const randomIndex = Math.floor(Math.random() * candidates.length);
+    return candidates[randomIndex];
+  };
+
+  const playRandomTrack = () => {
+    if (!isFeatureEnabled("sounds") || isTouch.value || !musicPlaylist.length) return;
+
+    if (currentTrack.value) {
+      currentTrack.value.howl.off("end");
+      currentTrack.value.howl.stop();
     }
 
-    musicTracks.luci.volume(clamp(1 - sceneWeights.about, 0, 1) * BASE_VOLUMES.luci);
-    musicTracks.about.volume(clamp(sceneWeights.about * 1.25 - 0.25, 0, 1) * BASE_VOLUMES.about);
+    const nextTrack = getRandomTrack(currentTrack.value?.id);
+    if (!nextTrack) return;
+
+    currentTrack.value = nextTrack;
+    nextTrack.howl.volume(nextTrack.volume);
+    nextTrack.howl.load();
+
+    // Play next random track automatically when current one ends
+    nextTrack.howl.once("end", () => {
+      if (soundsEnabled.value) {
+        playRandomTrack();
+      }
+    });
+
+    nextTrack.howl.play();
   };
 
-  const tick = () => {
-    if (!sizes.visible) return;
-    if (!soundsEnabled.value || !howlerUnlocked.value || isTouch.value) return;
-    tickVolumes();
+  const pauseMusic = () => {
+    if (pauseTimeout) clearTimeout(pauseTimeout);
+    // Allow Howler's master volume to smoothly fade out before pausing the track
+    pauseTimeout = setTimeout(() => {
+      if (!soundsEnabled.value && currentTrack.value?.howl.playing()) {
+        currentTrack.value.howl.pause();
+      }
+    }, 350);
   };
 
-  const play = (trackId: MusicTrack) => {
-    if (!isFeatureEnabled("sounds") || isTouch.value) return;
-    const track = musicTracks[trackId];
-    if (!track || track.playing()) return;
-    track.load();
-    track.play();
+  const resumeOrStartMusic = () => {
+    if (pauseTimeout) {
+      clearTimeout(pauseTimeout);
+      pauseTimeout = null;
+    }
+
+    if (!currentTrack.value) {
+      playRandomTrack();
+    } else if (!currentTrack.value.howl.playing()) {
+      currentTrack.value.howl.play();
+    }
   };
 
-  watchEffect(() => {
-    if (!isFeatureEnabled("sounds")) return;
-    if (!howlerUnlocked.value || !soundsEnabled.value || isTouch.value) return;
+  const stopMusic = () => {
+    if (pauseTimeout) {
+      clearTimeout(pauseTimeout);
+      pauseTimeout = null;
+    }
 
-    play("luci");
-    play("about");
-  });
+    if (currentTrack.value) {
+      currentTrack.value.howl.off("end");
+      currentTrack.value.howl.stop();
+      currentTrack.value = null;
+    }
+  };
 
-  onMounted(() => {
-    if (!isFeatureEnabled("sounds")) return;
-    gsap.ticker.add(tick);
-  });
+  watch(
+    [soundsEnabled, howlerUnlocked],
+    ([enabled, unlocked]) => {
+      if (!isFeatureEnabled("sounds") || isTouch.value) return;
+
+      if (enabled && unlocked) {
+        resumeOrStartMusic();
+      } else {
+        pauseMusic();
+      }
+    },
+    { immediate: true },
+  );
 
   onUnmounted(() => {
-    if (!isFeatureEnabled("sounds")) return;
-    gsap.ticker.remove(tick);
-    musicTracks.luci.stop();
-    musicTracks.about.stop();
+    stopMusic();
   });
 };

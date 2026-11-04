@@ -1,8 +1,8 @@
-import { musicTracks } from "./definitions/music";
 import { sounds, pools } from "./definitions/sounds";
 import { sprites } from "./definitions/sprites";
 
-export type MusicTrack = keyof typeof musicTracks;
+export type { MusicTrackItem } from "./definitions/music";
+
 export type SoundKey = keyof typeof sounds;
 export type SpriteKey = keyof typeof sprites;
 export type PoolKey = keyof typeof pools;
