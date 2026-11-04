@@ -32,7 +32,7 @@ const handleBackToTop = () => {
 
         <div class="footer-brand-group">
           <div class="footer-logo">
-            jesz<span class="footer-logo-accent">&gt;_</span>ev
+            jesz<span class="footer-logo-accent">Dev</span>
           </div>
           <div v-if="withSocial" class="footer-social-wrapper">
             <Social variant="theme" />
@@ -167,7 +167,7 @@ const handleBackToTop = () => {
     font-family: "Urbanist", sans-serif;
     font-size: var(--font-size-lg);
     font-weight: 800;
-    letter-spacing: 0.04em;
+    letter-spacing: -0.02em;
     color: var(--color-text-400);
 
     &-accent {
