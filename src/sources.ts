@@ -13,7 +13,7 @@ import matcapGray from "./assets/textures/matcap-gray.webp";
 import matcapSkin from "./assets/textures/matcap-skin.webp";
 import matcapWhite from "./assets/textures/matcap-white.webp";
 import numbersBitmap from "./assets/textures/numbers-bitmap.webp";
-import roomTexture from "./assets/textures/room.webp";
+import roomTexture from "./assets/textures/room.jpg";
 import roomShadowTexture from "./assets/textures/room-shadow.webp";
 import hologramPlaneTexture from "./assets/textures/hologram-plane.webp";
 
