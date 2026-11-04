@@ -39,37 +39,24 @@
     <svg style="display: none" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>
-          @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&amp;family=VT323&amp;display=swap");
           .logo-base-text {
-            font-family: "Space Grotesk", sans-serif;
-            font-weight: 600;
-            font-size: 50px;
+            font-family: "Urbanist", "Space Grotesk", sans-serif;
+            font-weight: 800;
+            font-size: 58px;
+            letter-spacing: -0.02em;
             fill: currentColor;
           }
-          .logo-prompt {
-            font-family: "VT323", monospace;
-            font-size: 64px;
+          .logo-accent-text {
+            font-family: "Urbanist", "Space Grotesk", sans-serif;
+            font-weight: 800;
+            font-size: 58px;
+            letter-spacing: -0.02em;
             fill: #f97316;
-          }
-          .logo-cursor {
-            animation: logo-blink 1s steps(1, end) infinite;
-          }
-          @keyframes logo-blink {
-            0%,
-            100% {
-              opacity: 1;
-            }
-            50% {
-              opacity: 0;
-            }
           }
         </style>
         <g id="logo-path">
-          <text x="25" y="65">
-            <tspan class="logo-base-text">jesz</tspan>
-            <tspan class="logo-prompt">&gt;</tspan>
-            <tspan class="logo-prompt logo-cursor">_</tspan>
-            <tspan class="logo-base-text">ev</tspan>
+          <text x="20" y="68">
+            <tspan class="logo-base-text">jesz</tspan><tspan class="logo-accent-text">Dev</tspan>
           </text>
         </g>
       </defs>
