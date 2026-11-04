@@ -145,6 +145,7 @@ onUnmounted(() => {
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
+  animation: none;
 
   &-active {
     opacity: 1;
