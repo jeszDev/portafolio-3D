@@ -40,21 +40,21 @@
       <defs>
         <style>
           @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&amp;family=VT323&amp;display=swap");
-          .base-text {
+          .logo-base-text {
             font-family: "Space Grotesk", sans-serif;
             font-weight: 600;
             font-size: 50px;
             fill: currentColor;
           }
-          .prompt {
+          .logo-prompt {
             font-family: "VT323", monospace;
             font-size: 64px;
             fill: #f97316;
           }
-          .cursor {
-            animation: blink 1s steps(1, end) infinite;
+          .logo-cursor {
+            animation: logo-blink 1s steps(1, end) infinite;
           }
-          @keyframes blink {
+          @keyframes logo-blink {
             0%,
             100% {
               opacity: 1;
@@ -66,10 +66,10 @@
         </style>
         <g id="logo-path">
           <text x="25" y="65">
-            <tspan class="base-text">jesz</tspan>
-            <tspan class="prompt">&gt;</tspan>
-            <tspan class="prompt cursor">_</tspan>
-            <tspan class="base-text">ev</tspan>
+            <tspan class="logo-base-text">jesz</tspan>
+            <tspan class="logo-prompt">&gt;</tspan>
+            <tspan class="logo-prompt logo-cursor">_</tspan>
+            <tspan class="logo-base-text">ev</tspan>
           </text>
         </g>
       </defs>
