@@ -1,6 +1,6 @@
 # Portfolio (2025)
 
-Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (English and German).
+Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (Spanish and English).
 
 Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Lenis**, 3D via **three.js**, audio via **Howler**. GLSL is compiled through **vite-plugin-glsl**.
 
