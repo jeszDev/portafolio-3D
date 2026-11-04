@@ -97,7 +97,7 @@ const createSoccerBallTexture = (): CanvasTexture => {
   ctx.fillStyle = "#f97316";
   ctx.font = "bold 20px 'Fira Code', monospace";
   ctx.textAlign = "center";
-  ctx.fillText("jesz>_ev", width * 0.3, row1Y - 65);
+  ctx.fillText("jeszDev", width * 0.3, row1Y - 65);
 
   const texture = new CanvasTexture(canvas);
   texture.needsUpdate = true;
