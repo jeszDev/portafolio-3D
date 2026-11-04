@@ -2,10 +2,8 @@ import { onUnmounted, ref, watch } from "vue";
 import { musicPlaylist, type MusicTrackItem } from "../definitions/music";
 import { howlerUnlocked, soundsEnabled } from "./useHowler";
 import { isFeatureEnabled } from "../../../utils/features";
-import { useAgent } from "../../../composables/useAgent";
 
 export const useMusic = () => {
-  const { isTouch } = useAgent();
   const currentTrack = ref<MusicTrackItem | null>(null);
   let pauseTimeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -20,7 +18,7 @@ export const useMusic = () => {
   };
 
   const playRandomTrack = () => {
-    if (!isFeatureEnabled("sounds") || isTouch.value || !musicPlaylist.length) return;
+    if (!isFeatureEnabled("sounds") || !musicPlaylist.length) return;
 
     if (currentTrack.value) {
       currentTrack.value.howl.off("end");
@@ -83,7 +81,7 @@ export const useMusic = () => {
   watch(
     [soundsEnabled, howlerUnlocked],
     ([enabled, unlocked]) => {
-      if (!isFeatureEnabled("sounds") || isTouch.value) return;
+      if (!isFeatureEnabled("sounds")) return;
 
       if (enabled && unlocked) {
         resumeOrStartMusic();
