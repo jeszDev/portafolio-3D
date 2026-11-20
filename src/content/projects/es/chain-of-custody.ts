@@ -4,6 +4,7 @@ export default {
   title: "Sistema de Cadena de Custodia",
   theme: "dark",
   tags: ["laravel", "php", "mysql", "jquery", "bootstrap"],
+  demo: { status: "coming-soon" },
   live: "https://bodega.fiscaliamichoacan.gob.mx/login",
   description:
     "Plataforma web para la digitalización, control y trazabilidad completa de indicios y evidencias físicas en bodega bajo estrictos protocolos normativos de cadena de custodia.<br/><br/>Sistema en producción institucuional (acceso restringido a personal autorizado) que sustituye los registros manuales por una plataforma auditable.",

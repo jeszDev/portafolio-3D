@@ -4,6 +4,7 @@ export default {
   title: "Latidos",
   theme: "dark",
   tags: ["laravel", "vue", "typescript", "mysql"],
+  demo: { status: "coming-soon" },
   description:
     "Plataforma web Full Stack para la gestión clínica integral y trazabilidad de consultas médicas.<br/><br/>Desarrollada bajo una arquitectura desacoplada con Laravel en el Backend (API REST) y Vue.js en el Frontend, optimizando la atención de pacientes y el control de expedientes.",
   components: [

@@ -5,6 +5,9 @@ import type { ProjectComponent } from "../features/projects/types";
 
 export type ProjectId = (typeof projectIds)[number];
 
+/** Demo state: pending publication, or available at a public URL. */
+export type ProjectDemo = { status: "coming-soon" } | { status: "available"; url: string };
+
 export interface ProjectContent {
   title: string;
   theme: "light" | "dark";
@@ -13,6 +16,7 @@ export interface ProjectContent {
   videoBorder?: boolean;
   live?: string;
   source?: string;
+  demo?: ProjectDemo;
   components?: ProjectComponent[];
 }
 

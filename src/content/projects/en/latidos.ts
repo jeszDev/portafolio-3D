@@ -4,6 +4,7 @@ export default {
   title: "Latidos",
   theme: "dark",
   tags: ["laravel", "vue", "typescript", "mysql"],
+  demo: { status: "coming-soon" },
   description:
     "Full Stack web platform for comprehensive clinical management and medical consultation traceability.<br/><br/>Architected using a decoupled API REST with Laravel on the Backend and Vue.js on the Frontend, streamlining patient care and medical record tracking.",
   components: [

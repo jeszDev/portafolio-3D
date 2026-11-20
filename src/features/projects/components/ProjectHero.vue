@@ -4,13 +4,20 @@ import Button from "../../../components/Button.vue";
 import { t } from "../../../i18n/utils/translate";
 import Link from "../../../components/Link.vue";
 import { projectId } from "../../../composables/useRouteObserver";
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 
 import type { ProjectContent } from "../../../content/types";
 
-const { content } = defineProps<{
+const props = defineProps<{
   content: ProjectContent;
 }>();
+
+const isDemoComingSoon = computed(() => props.content.demo?.status === "coming-soon");
+
+const demoUrl = computed(() => {
+  const demo = props.content.demo;
+  return demo?.status === "available" && demo.url.trim() !== "" ? demo.url : undefined;
+});
 
 const animationKey = ref(0);
 
@@ -34,6 +41,20 @@ watch(projectId, () => {
     </div>
     <p class="project-hero-description" v-html="content.description"></p>
     <div class="project-hero-buttons">
+      <Link v-if="demoUrl" :href="demoUrl" external class="project-hero-button" data-cursor="arrow-external">
+        <Button renderAs="div" variant="accent" class="children-unclickable" data-hoversound="hover">{{
+          t("view-demo")
+        }}</Button>
+      </Link>
+      <Button
+        v-else-if="isDemoComingSoon"
+        renderAs="div"
+        variant="border"
+        class="project-hero-button project-hero-button-pending"
+        role="status"
+        aria-disabled="true"
+        >{{ t("demo-coming-soon") }}</Button
+      >
       <Link v-if="content.live" :href="content.live" external class="project-hero-button" data-cursor="arrow-external">
         <Button renderAs="div" variant="accent" class="children-unclickable" data-hoversound="hover">{{
           t("live-view")
@@ -69,6 +90,13 @@ watch(projectId, () => {
 
     @include mixins.mq("md") {
       width: fit-content;
+    }
+
+    // Non-interactive placeholder: muted and immune to the variant's hover styles.
+    &-pending {
+      opacity: 0.6;
+      cursor: default;
+      pointer-events: none;
     }
   }
 
