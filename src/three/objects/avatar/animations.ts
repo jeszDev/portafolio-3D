@@ -5,10 +5,7 @@ import gsap from "gsap";
 import { resources } from "../../../utils/resources";
 import { sceneWeights } from "../../../animations/scenes";
 import { face } from "./face";
-import { sleepingSprite } from "../contact/sleeping-sprite";
-import { playSound } from "../../../features/sounds/utils/sounds";
 import { isFeatureEnabled } from "../../../utils/features";
-import { stopSnoreRepetition } from "../../../features/sounds/core/contact";
 
 import type { AnimationClip, Object3D } from "three";
 

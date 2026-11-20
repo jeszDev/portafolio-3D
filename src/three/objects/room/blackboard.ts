@@ -18,7 +18,10 @@ const DEFAULT_MESSAGES = [
   "Estoy estudiando Nuxt & Vue 3.",
   "Explorando Three.js y 3D en la web.",
   "¡Bienvenido a mi espacio de trabajo!",
-];
+] as const;
+
+/** Returns the message at `index`, falling back to the first one if out of range. */
+const getMessage = (index: number): string => DEFAULT_MESSAGES[index] ?? DEFAULT_MESSAGES[0];
 
 let mesh: Mesh | null = null;
 let canvas: HTMLCanvasElement | null = null;
@@ -27,7 +30,7 @@ let texture: CanvasTexture | null = null;
 let material: MeshBasicMaterial | null = null;
 let box3: ClickableBox3 | null = null;
 let currentMessageIndex = 0;
-let currentMessage = DEFAULT_MESSAGES[0];
+let currentMessage = getMessage(0);
 
 const initCanvas = () => {
   canvas = document.createElement("canvas");
@@ -45,13 +48,15 @@ const initCanvas = () => {
 
 const drawChalkboard = (message: string) => {
   if (!ctx || !canvas || !texture) return;
+  // Local alias keeps the non-null narrowing inside callbacks.
+  const context = ctx;
 
   // 1. Fondo verde pizarra escolar limpio
-  ctx.fillStyle = "#1e3c2f";
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  context.fillStyle = "#1e3c2f";
+  context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   // 2. Sutil degradado para efecto de profundidad y luz tenue
-  const gradient = ctx.createRadialGradient(
+  const gradient = context.createRadialGradient(
     CANVAS_WIDTH / 2,
     CANVAS_HEIGHT / 2,
     CANVAS_HEIGHT * 0.35,
@@ -61,18 +66,18 @@ const drawChalkboard = (message: string) => {
   );
   gradient.addColorStop(0, "rgba(255, 255, 255, 0.04)");
   gradient.addColorStop(1, "rgba(0, 0, 0, 0.15)");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   // 3. Estilo de texto tipo tiza
-  ctx.fillStyle = "#ffffff";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.font = "bold 52px system-ui, -apple-system, sans-serif";
+  context.fillStyle = "#ffffff";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.font = "bold 52px system-ui, -apple-system, sans-serif";
 
   // Efecto difuso de tiza (chalk glow)
-  ctx.shadowColor = "rgba(255, 255, 255, 0.35)";
-  ctx.shadowBlur = 4;
+  context.shadowColor = "rgba(255, 255, 255, 0.35)";
+  context.shadowBlur = 4;
 
   // 4. Auto-wrap para oraciones largas
   const maxWidth = CANVAS_WIDTH - 120;
@@ -81,17 +86,17 @@ const drawChalkboard = (message: string) => {
   const lines: string[] = [];
   let currentLine = "";
 
-  for (let i = 0; i < words.length; i++) {
-    const testLine = currentLine ? `${currentLine} ${words[i]}` : words[i];
-    const metrics = ctx.measureText(testLine);
+  words.forEach((word, index) => {
+    const testLine = currentLine ? `${currentLine} ${word}` : word;
+    const metrics = context.measureText(testLine);
 
-    if (metrics.width > maxWidth && i > 0) {
+    if (metrics.width > maxWidth && index > 0) {
       lines.push(currentLine);
-      currentLine = words[i];
+      currentLine = word;
     } else {
       currentLine = testLine;
     }
-  }
+  });
   lines.push(currentLine);
 
   // Centrar verticalmente las líneas
@@ -99,12 +104,12 @@ const drawChalkboard = (message: string) => {
     CANVAS_HEIGHT / 2 - ((lines.length - 1) * lineHeight) / 2;
 
   lines.forEach((line, index) => {
-    ctx.fillText(line, CANVAS_WIDTH / 2, startY + index * lineHeight);
+    context.fillText(line, CANVAS_WIDTH / 2, startY + index * lineHeight);
   });
 
   // Reset shadow
-  ctx.shadowColor = "transparent";
-  ctx.shadowBlur = 0;
+  context.shadowColor = "transparent";
+  context.shadowBlur = 0;
 
   // Notificar a Three.js que la textura cambió
   texture.needsUpdate = true;
@@ -117,7 +122,7 @@ const setMessage = (text: string) => {
 
 const nextMessage = () => {
   currentMessageIndex = (currentMessageIndex + 1) % DEFAULT_MESSAGES.length;
-  setMessage(DEFAULT_MESSAGES[currentMessageIndex]);
+  setMessage(getMessage(currentMessageIndex));
 };
 
 const handleClick = () => {

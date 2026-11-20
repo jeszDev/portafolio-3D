@@ -7,6 +7,7 @@ import { contact } from ".";
 import { resources } from "../../../utils/resources";
 import { sceneWeights } from "../../../animations/scenes";
 import { lerp } from "../../../utils/math";
+import { isFeatureEnabled } from "../../../utils/features";
 
 import type { BufferGeometry } from "three";
 
@@ -23,8 +24,10 @@ const uniforms = {
 };
 
 const init = () => {
-  // gsap.ticker.add(tick);
-  // initMesh();
+  if (!isFeatureEnabled("sleepingSprite")) return;
+
+  gsap.ticker.add(tick);
+  initMesh();
 };
 
 const initMesh = () => {

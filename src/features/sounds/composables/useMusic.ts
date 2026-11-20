@@ -9,12 +9,12 @@ export const useMusic = () => {
 
   const getRandomTrack = (previousId?: string): MusicTrackItem | null => {
     if (!musicPlaylist.length) return null;
-    if (musicPlaylist.length === 1) return musicPlaylist[0];
+    if (musicPlaylist.length === 1) return musicPlaylist[0] ?? null;
 
     // Filter out previous track to avoid consecutive repetition
     const candidates = musicPlaylist.filter((track) => track.id !== previousId);
     const randomIndex = Math.floor(Math.random() * candidates.length);
-    return candidates[randomIndex];
+    return candidates[randomIndex] ?? null;
   };
 
   const playRandomTrack = () => {

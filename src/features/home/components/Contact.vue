@@ -4,7 +4,6 @@ import { transitions } from "../../../animations";
 import { t } from "../../../i18n/utils/translate";
 import Mail from "../../../components/icons/Mail.vue";
 import Github from "../../../components/icons/Github.vue";
-import Linkedin from "../../../components/icons/Linkedin.vue";
 import ArrowRight from "../../../components/icons/ArrowRight.vue";
 
 const contactElement = ref<HTMLElement | null>(null);

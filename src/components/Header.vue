@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import Button from "./Button.vue";
 import Logo from "./Logo.vue";
 import { computed, ref } from "vue";
 import { t } from "../i18n/utils/translate";
 import { useHeaderTheme } from "../composables/useHeaderTheme";
 import { lenis } from "../composables/useScroll";
 import { projectId } from "../composables/useRouteObserver";
-import { social } from "../content/social";
 import ButtonRound from "./ButtonRound.vue";
 import ArrowRight from "./icons/ArrowRight.vue";
 import SoundsToggle from "./SoundsToggle.vue";
@@ -54,13 +52,6 @@ const classNames = computed(() => {
     "header-dark": isDarkTheme.value,
     "header-scrolled": scrolledPastHeroVisible.value,
     [`project-${projectId.value}`]: projectId.value !== null,
-  };
-});
-
-const getInTouchClassNames = computed(() => {
-  return {
-    "header-get-in-touch": true,
-    "header-get-in-touch-isProjectPage": projectId.value !== null,
   };
 });
 </script>
