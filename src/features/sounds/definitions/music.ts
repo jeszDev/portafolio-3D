@@ -1,7 +1,8 @@
 import { Howl } from "howler";
 
-import trackLuci from "../../../assets/music/luci.ogg";
-import trackAbout from "../../../assets/music/ambient-pads.ogg";
+import trackBlueMary from "../../../assets/music/blue-mary-s-blues.mp3";
+import trackIoriYagami from "../../../assets/music/kof-96-arashi_no_saxophone_2-iori_yagami.mp3";
+import trackNewFaceTeam from "../../../assets/music/kof-97-bloody_new_face_team.mp3";
 
 export interface MusicTrackItem {
   id: string;
@@ -12,15 +13,21 @@ export interface MusicTrackItem {
 
 export const musicPlaylist: MusicTrackItem[] = [
   {
-    id: "luci",
-    name: "Luci",
-    howl: new Howl({ src: [trackLuci], loop: false, preload: false }),
+    id: "blueMary",
+    name: "Blue Mary's Blues",
+    howl: new Howl({ src: [trackBlueMary], loop: false, preload: false }),
     volume: 0.2,
   },
   {
-    id: "ambient-pads",
-    name: "Ambient Pads",
-    howl: new Howl({ src: [trackAbout], loop: false, preload: false }),
+    id: "ioriYagami",
+    name: "Arashi no Saxophone",
+    howl: new Howl({ src: [trackIoriYagami], loop: false, preload: false }),
+    volume: 0.25,
+  },
+  {
+    id: "newFaceTeam",
+    name: "Bloody",
+    howl: new Howl({ src: [trackNewFaceTeam], loop: false, preload: false }),
     volume: 0.25,
   },
 ];
