@@ -6,20 +6,22 @@ import Mail from "../../../components/icons/Mail.vue";
 import Github from "../../../components/icons/Github.vue";
 import ArrowRight from "../../../components/icons/ArrowRight.vue";
 
+const EMAIL = "contacto@jeszdev.dev";
+
 const contactElement = ref<HTMLElement | null>(null);
 const copied = ref(false);
 let copyTimeout: number | null = null;
 
 const copyEmail = async () => {
   try {
-    await navigator.clipboard.writeText("jjcr.dev@gmail.com");
+    await navigator.clipboard.writeText(EMAIL);
     copied.value = true;
     if (copyTimeout) clearTimeout(copyTimeout);
     copyTimeout = window.setTimeout(() => {
       copied.value = false;
     }, 2200);
   } catch {
-    window.location.href = "mailto:jjcr.dev@gmail.com";
+    window.location.href = `mailto:${EMAIL}`;
   }
 };
 
@@ -62,7 +64,7 @@ onUnmounted(() => {
           </div>
           <div class="card-info">
             <span class="card-label">{{ t("email-label") }}</span>
-            <span class="card-value">jjcr.dev@gmail.com</span>
+            <span class="card-value">{{ EMAIL }}</span>
           </div>
           <div class="card-action">
             <span class="badge-copy">
