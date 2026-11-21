@@ -1,6 +1,5 @@
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import gsap from "gsap";
-import { lerp } from "../../../utils/math";
 import { Howler } from "howler";
 import { isFeatureEnabled } from "../../../utils/features";
 import { tick as contactTick } from "../core/contact";
@@ -12,21 +11,24 @@ import { getSoundsHowl } from "../utils/sounds";
 import type { SoundKey } from "../types";
 
 export const howlerUnlocked = ref(false);
-export const soundsEnabled = ref(false);
+export const musicEnabled = ref(false);
+// Backward compatibility alias for any component referencing soundsEnabled
+export const soundsEnabled = musicEnabled;
 
-Howler.volume(0);
+Howler.volume(1);
 
 export const useHowler = () => {
-  const enabledVolume = ref<number>(0);
-
   const handleUnlocked = () => {
     howlerUnlocked.value = true;
+    Howler.volume(1);
 
-    const storeItem = localStorage.getItem("portfolio-soundsEnabled");
+    const storeItem =
+      localStorage.getItem("portfolio-musicEnabled") ?? localStorage.getItem("portfolio-soundsEnabled");
     if (storeItem) {
-      soundsEnabled.value = storeItem === "true";
+      musicEnabled.value = storeItem === "true";
     } else {
-      soundsEnabled.value = true;
+      musicEnabled.value = true;
+      localStorage.setItem("portfolio-musicEnabled", "true");
       localStorage.setItem("portfolio-soundsEnabled", "true");
     }
   };
@@ -38,13 +40,6 @@ export const useHowler = () => {
     } else {
       contactTick();
       roomTick();
-
-      const currentVolume = Howler.volume();
-      if (currentVolume > 0.99 && enabledVolume.value === 1) {
-        return;
-      }
-      const speed = enabledVolume.value === 1 ? 0.01 : 0.05;
-      Howler.volume(lerp(currentVolume, enabledVolume.value, speed));
     }
   };
 
@@ -54,13 +49,13 @@ export const useHowler = () => {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     if (event.code === "KeyM") {
-      soundsEnabled.value = !soundsEnabled.value;
+      musicEnabled.value = !musicEnabled.value;
     }
   };
 
-  watch(soundsEnabled, (newVal) => {
+  watch(musicEnabled, (newVal) => {
     if (!isFeatureEnabled("sounds")) return;
-    enabledVolume.value = newVal ? 1 : 0;
+    localStorage.setItem("portfolio-musicEnabled", newVal.toString());
     localStorage.setItem("portfolio-soundsEnabled", newVal.toString());
   });
 
@@ -75,10 +70,12 @@ export const useHowler = () => {
 
   onMounted(() => {
     if (!isFeatureEnabled("sounds")) return;
-    Howler.volume(0);
+    Howler.volume(1);
 
     if (howlerUnlocked.value) {
-      soundsEnabled.value = localStorage.getItem("portfolio-soundsEnabled") === "true";
+      const storeItem =
+        localStorage.getItem("portfolio-musicEnabled") ?? localStorage.getItem("portfolio-soundsEnabled");
+      musicEnabled.value = storeItem === "true";
     }
 
     gsap.ticker.add(tick);

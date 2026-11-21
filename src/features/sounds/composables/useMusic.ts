@@ -1,6 +1,6 @@
 import { onUnmounted, ref, watch } from "vue";
 import { musicPlaylist, type MusicTrackItem } from "../definitions/music";
-import { howlerUnlocked, soundsEnabled } from "./useHowler";
+import { howlerUnlocked, musicEnabled } from "./useHowler";
 import { isFeatureEnabled } from "../../../utils/features";
 
 export const useMusic = () => {
@@ -29,27 +29,34 @@ export const useMusic = () => {
     if (!nextTrack) return;
 
     currentTrack.value = nextTrack;
-    nextTrack.howl.volume(nextTrack.volume);
+    nextTrack.howl.volume(0);
     nextTrack.howl.load();
 
     // Play next random track automatically when current one ends
     nextTrack.howl.once("end", () => {
-      if (soundsEnabled.value) {
+      if (musicEnabled.value) {
         playRandomTrack();
       }
     });
 
     nextTrack.howl.play();
+    nextTrack.howl.fade(0, nextTrack.volume, 600);
   };
 
   const pauseMusic = () => {
     if (pauseTimeout) clearTimeout(pauseTimeout);
-    // Allow Howler's master volume to smoothly fade out before pausing the track
+    if (!currentTrack.value || !currentTrack.value.howl.playing()) return;
+
+    const track = currentTrack.value;
+    const currentVol = track.howl.volume();
+    track.howl.fade(currentVol, 0, 400);
+
+    // Pause the track after the fade out completes to save resources
     pauseTimeout = setTimeout(() => {
-      if (!soundsEnabled.value && currentTrack.value?.howl.playing()) {
-        currentTrack.value.howl.pause();
+      if (!musicEnabled.value && track.howl.playing()) {
+        track.howl.pause();
       }
-    }, 350);
+    }, 400);
   };
 
   const resumeOrStartMusic = () => {
@@ -60,8 +67,12 @@ export const useMusic = () => {
 
     if (!currentTrack.value) {
       playRandomTrack();
-    } else if (!currentTrack.value.howl.playing()) {
-      currentTrack.value.howl.play();
+    } else {
+      const track = currentTrack.value;
+      if (!track.howl.playing()) {
+        track.howl.play();
+      }
+      track.howl.fade(track.howl.volume(), track.volume, 400);
     }
   };
 
@@ -79,7 +90,7 @@ export const useMusic = () => {
   };
 
   watch(
-    [soundsEnabled, howlerUnlocked],
+    [musicEnabled, howlerUnlocked],
     ([enabled, unlocked]) => {
       if (!isFeatureEnabled("sounds")) return;
 
